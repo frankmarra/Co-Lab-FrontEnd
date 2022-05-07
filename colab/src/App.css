@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #EAF2CE;
+}
+
+.nav-wrapper {
+  display: flex;
+  background-color: #53A62D;
+  color: #EAF2CE;
+}
+
+

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Piazzolla:opsz@8..30&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -6,6 +8,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #EAF2CE;
+  height: 100vh;
 }
 
 .nav-wrapper {
@@ -14,4 +17,50 @@ body {
   color: #EAF2CE;
 }
 
+.nav-title {
+  font-family: 'Piazzolla', serif;
+  font-size: 3.5rem;
+}
+/* Home */
 
+.home-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.home-left {
+  display: flex;
+}
+.home-image {
+  position: relative;
+}
+
+.home-image img{
+  filter: brightness(65%);
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.about-colab {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+}
+
+.home-center {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-title {
+  font-family: 'Piazzolla', 'sans serif';
+  font-size: 5rem;
+  color:#2f5a1b;
+}
+
+.loginout-buttons {
+  display: flex;
+}

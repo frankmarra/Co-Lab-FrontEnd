@@ -64,3 +64,14 @@ body {
 .loginout-buttons {
   display: flex;
 }
+
+/* Search Page */
+
+.search-page-wrapper{
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.search-choices ul li{
+  display:flex;
+}

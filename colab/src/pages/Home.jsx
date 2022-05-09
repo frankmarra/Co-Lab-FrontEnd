@@ -1,5 +1,7 @@
 import LoginSignup from '../components/LoginSignup'
 import Logout from '../components/Logout'
+import AudioPlayer from '../components/AudioPlayer'
+import { Link } from 'react-router-dom'
 
 const Home = ({ setUser }) => {
   return (
@@ -16,6 +18,8 @@ const Home = ({ setUser }) => {
           <LoginSignup setUser={setUser} />
           <Logout />
         </div>
+        <AudioPlayer />
+        <Link to="/search">Search</Link>
       </div>
       <div className="home-right">
         <div className="home-playlist">

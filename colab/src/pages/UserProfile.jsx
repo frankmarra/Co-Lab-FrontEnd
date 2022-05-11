@@ -1,21 +1,14 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const UserProfile = () => {
-  const [users, setUsers] = useState({})
-
-  const getUsers = async () => {
-    const response = await axios.get(`http://localhost:8000/users/1`)
-    setUsers(response.data)
-  }
-
-  useEffect(() => {
-    getUsers()
-  }, [])
-
-  return (
+const UserProfile = ({ activeUser, authenticated }) => {
+  return activeUser && authenticated ? (
     <div className="user-page-wrapper">
-      <div className="user-page-name">{users.userName}</div>
+      <div className="user-page-name"></div>
+    </div>
+  ) : (
+    <div className="protected">
+      <h3>Please log in...</h3>
     </div>
   )
 }

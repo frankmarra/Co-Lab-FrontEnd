@@ -1,17 +1,21 @@
 import SearchFilterChoice from './SearchFilterChoice'
 
 const SearchFilters = ({ genres, needs, metadata }) => {
+
+  const handleSubmit = () => {
+    
+  }
   return (
     <div className="search-page-choices">
       <h3>Search Filters:</h3>
-      <form className="search-choices">
+      <form className="search-choices" onSubmit={handleSubmit}>
         <h4>Genres:</h4>
         <ul id="genre-search-dropdown">
           {genres.map((genre) => (
             <SearchFilterChoice
               name={genre.genreName}
               tracks={genre.tracks}
-              key={genre.id}
+              key={genre.genreName}
             />
           ))}
         </ul>
@@ -21,7 +25,7 @@ const SearchFilters = ({ genres, needs, metadata }) => {
             <SearchFilterChoice
               name={need.needName}
               tracks={need.tracks}
-              key={need.id}
+              key={need.needName}
             />
           ))}
         </ul>
@@ -31,7 +35,7 @@ const SearchFilters = ({ genres, needs, metadata }) => {
             <SearchFilterChoice
               name={data.metadataName}
               tracks={data.tracks}
-              key={data.id}
+              key={data.metadataName}
             />
           ))}
         </ul>

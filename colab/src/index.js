@@ -4,22 +4,13 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { Auth0Provider } from '@auth0/auth0-react'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <Auth0Provider
-      domain="dev-29n27etf.us.auth0.com"
-      clientId="mFYA9KfdpuChetQzf2E6ZflioiATqMAa"
-      redirectUri="http://localhost:3000/"
-      audience="https://colab/api"
-      scope="read:current_user update:current_user_metadata"
-    >
-      <Router>
-        <App />
-      </Router>
-    </Auth0Provider>
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>
 )
 

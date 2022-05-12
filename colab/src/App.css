@@ -80,3 +80,27 @@ nav {
 .search-choices ul li{
   display:flex;
 }
+
+/* User Profile Active */
+
+.user-page-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 7fr 1fr;
+  /* height: 100vh; */
+}
+
+.user-page-content {
+  grid-column: 2 / 3;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.user-tracks {
+  display: flex;
+  flex-flow: column;
+}
+
+/* Audio Player */
+.player-wrapper {
+  height: 100%;
+}

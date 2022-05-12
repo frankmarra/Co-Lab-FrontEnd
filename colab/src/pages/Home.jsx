@@ -21,7 +21,6 @@ const Home = ({ tracks, tracksLength }) => {
         </div>
         <div className="home-center">
           <div className="home-title"></div>
-          <AudioPlayer />
           <Link to="/search">Search</Link>
         </div>
         <div className="home-right">

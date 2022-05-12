@@ -8,6 +8,7 @@ import UserProfile from './pages/UserProfile'
 import SearchPage from './pages/SearchPage'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
+import AddTrack from './pages/AddTrack'
 import axios from 'axios'
 
 // const UserContext = createContext()
@@ -20,6 +21,8 @@ function App() {
   const [needs, setNeeds] = useState()
   const [tracks, setTracks] = useState()
   const [tracksLength, setTracksLength] = useState()
+  const [userDetails, setUserDetails] = useState()
+  const [userTracks, setUserTracks] = useState()
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -32,6 +35,23 @@ function App() {
       setTracks(response.data)
       setTracksLength(response.data.length)
     }
+
+    const getGenres = async () => {
+      const response = await axios.get(`http://localhost:3001/genres`)
+      setGenres(response.data)
+    }
+    const getMetadata = async () => {
+      const response = await axios.get(`http://localhost:3001/metadata`)
+      setMetadata(response.data)
+    }
+    const getNeeds = async () => {
+      const response = await axios.get(`http://localhost:3001/needs`)
+      setNeeds(response.data)
+    }
+
+    getGenres()
+    getMetadata()
+    getNeeds()
     getTracks()
   }, [])
 
@@ -77,11 +97,27 @@ function App() {
           }
         />
         <Route
-          path="/users/:user_id"
+          path="/users/:userId"
           element={
             <UserProfile
               activeUser={activeUser}
               authenticated={authenticated}
+              setUserDetails={setUserDetails}
+              userDetails={userDetails}
+              userTracks={userTracks}
+              setUserTracks={setUserTracks}
+            />
+          }
+        />
+        <Route
+          path="/users/:userId/addtrack"
+          element={
+            <AddTrack
+              activeUser={activeUser}
+              authenticated={authenticated}
+              genres={genres}
+              metadata={metadata}
+              needs={needs}
             />
           }
         />

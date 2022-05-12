@@ -21,15 +21,22 @@ const UserProfile = ({
       )
       setUserDetails(response.data)
     }
-    const getUserTracks = async () => {
-      const response = await axios.get(
-        `http://localhost:3001/api/users/${userId}/tracks`
-      )
-      setUserTracks(response.data)
-    }
+
     getUserDetails()
     getUserTracks()
-  }, [userId])
+  }, [userId, setUserDetails, setUserTracks])
+
+  const getUserTracks = async () => {
+    const response = await axios.get(
+      `http://localhost:3001/api/users/${userId}/tracks`
+    )
+    setUserTracks(response.data)
+  }
+
+  const destroyTrack = async (trackId) => {
+    await axios.delete(`http://localhost:3001/api/tracks/${trackId}`)
+    getUserTracks()
+  }
 
   return activeUser &&
     authenticated &&
@@ -44,6 +51,7 @@ const UserProfile = ({
           tracks={userTracks}
           activeUser={activeUser}
           setTrackDetails={setTrackDetails}
+          destroyTrack={destroyTrack}
         />
       </div>
       <div className="user-page-crud">

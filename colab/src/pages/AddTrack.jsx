@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import AddTrackComp from '../components/AddTrackComp'
 
 //See ReadMe for site that helped with setting default state logic:
 const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
@@ -24,6 +25,7 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
     metadata: [],
     userId: activeUser.id
   })
+  const [createReady, setCreateReady] = useState(false)
   let navigate = useNavigate()
 
   const handleChange = (e) => {
@@ -80,14 +82,12 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
       genres: trackGenreChoices,
       metadata: trackMetadataChoices
     })
-    await axios.post(
-      `http://localhost:3001/api/tracks/${activeUser.id}`,
-      formValues
-    )
-    navigate(`/users/${activeUser.id}`)
+    setCreateReady(true)
   }
 
-  return (
+  return createReady ? (
+    <AddTrackComp formValues={formValues} setCreateReady={setCreateReady} />
+  ) : (
     <div className="add-track-wrapper">
       <div className="add-track-form-wrapper">
         <form className="add-track-form" id="add-track" onSubmit={handleSubmit}>

@@ -1,7 +1,7 @@
 import ReactPlayer from 'react-player/lazy'
 import { useNavigate } from 'react-router-dom'
 
-const AudioPlayer = ({ track, activeUser, setTrackDetails }) => {
+const AudioPlayer = ({ track, activeUser, setTrackDetails, destroyTrack }) => {
   let navigate = useNavigate()
   return track ? (
     <div className="player-wrapper">
@@ -21,6 +21,19 @@ const AudioPlayer = ({ track, activeUser, setTrackDetails }) => {
             >
               Update
             </button>
+            <div className="delete-track-link">
+              <button
+                onClick={() =>
+                  window.confirm(
+                    `Are you sure you want to delete ${track.trackName}?`
+                  )
+                    ? destroyTrack(track.id)
+                    : console.log('canceled')
+                }
+              >
+                Delete
+              </button>
+            </div>
           </div>
         ) : (
           <div></div>

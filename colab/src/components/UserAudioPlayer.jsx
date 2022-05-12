@@ -1,6 +1,11 @@
 import AudioPlayer from './AudioPlayer'
 
-const UserAudioPlayer = ({ tracks, activeUser, setTrackDetails }) => {
+const UserAudioPlayer = ({
+  tracks,
+  activeUser,
+  setTrackDetails,
+  destroyTrack
+}) => {
   return (
     tracks && (
       <div className="user-tracks">
@@ -10,6 +15,7 @@ const UserAudioPlayer = ({ tracks, activeUser, setTrackDetails }) => {
             key={track.id}
             activeUser={activeUser}
             setTrackDetails={setTrackDetails}
+            destroyTrack={destroyTrack}
           />
         ))}
       </div>

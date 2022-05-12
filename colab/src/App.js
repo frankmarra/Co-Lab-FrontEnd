@@ -68,6 +68,7 @@ function App() {
     setActiveUser(user)
     toggleAuthenticated(true)
   }
+
   return (
     <div className="App">
       <Nav

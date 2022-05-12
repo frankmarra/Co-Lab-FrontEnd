@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+//See ReadMe for site that helped with setting default state logic:
 const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
   const [trackGenres, setTrackGenres] = useState(
     new Array(genres.length).fill(false)
@@ -29,6 +30,7 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
+  //See ReadMe for site I used to help with this logic:
   const handleGenreChange = (i) => {
     let updateGenres = trackGenres.map((genre, index) =>
       i === index ? !genre : genre
@@ -66,7 +68,6 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
         trackMetadataChoices.push({ metadataId: i + 1 })
       }
     })
-    console.log(formValues)
 
     trackNeeds.forEach((need, i) => {
       if (need) {

@@ -43,3 +43,13 @@
 ## Credits:
 
 #### Coming soon.
+
+#### [WaveSurfer](http://wavesurfer-js.org/docs/)
+
+#### [Pexels](https://www.pexels.com/)
+
+#### [ReactPlayer](https://www.npmjs.com/package/react-player)
+
+#### [Sequelize](https://sequelize.org/docs/v6/)
+
+#### [Help with belongsToMany](https://sebhastian.com/sequelize-belongstomany/)

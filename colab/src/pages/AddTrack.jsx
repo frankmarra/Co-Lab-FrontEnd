@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AddTrackComp from '../components/AddTrackComp'
 
-//See ReadMe for site that helped with setting default state logic:
 const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
+  //See ReadMe for site that helped with setting default state logic:
   const [trackGenres, setTrackGenres] = useState(
     new Array(genres.length).fill(false)
   )

@@ -10,6 +10,7 @@ import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import AddTrack from './pages/AddTrack'
 import UpdateTrack from './pages/UpdateTrack'
+import CreateColab from './pages/CreateColab'
 import axios from 'axios'
 
 // const UserContext = createContext()
@@ -135,6 +136,16 @@ function App() {
               metadata={metadata}
               needs={needs}
               trackDetails={trackDetails}
+            />
+          }
+        />
+        <Route
+          path="/users/:userId/createcolab"
+          element={
+            <CreateColab
+              activeUser={activeUser}
+              authenticated={authenticated}
+              userTracks={userTracks}
             />
           }
         />

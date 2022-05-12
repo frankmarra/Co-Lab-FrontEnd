@@ -57,6 +57,7 @@ const UserProfile = ({
       <div className="user-page-crud">
         Crud
         <Link to={`/users/${userId}/addtrack`}>Add Track</Link>
+        <Link to={`/users/${userId}/createcolab`}>Create Co-lab</Link>
       </div>
     </div>
   ) : (

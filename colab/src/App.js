@@ -9,6 +9,7 @@ import SearchPage from './pages/SearchPage'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import AddTrack from './pages/AddTrack'
+import UpdateTrack from './pages/UpdateTrack'
 import axios from 'axios'
 
 // const UserContext = createContext()
@@ -23,6 +24,7 @@ function App() {
   const [tracksLength, setTracksLength] = useState()
   const [userDetails, setUserDetails] = useState()
   const [userTracks, setUserTracks] = useState()
+  const [trackDetails, setTrackDetails] = useState()
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -37,15 +39,15 @@ function App() {
     }
 
     const getGenres = async () => {
-      const response = await axios.get(`http://localhost:3001/genres`)
+      const response = await axios.get(`http://localhost:3001/api/genres`)
       setGenres(response.data)
     }
     const getMetadata = async () => {
-      const response = await axios.get(`http://localhost:3001/metadata`)
+      const response = await axios.get(`http://localhost:3001/api/metadata`)
       setMetadata(response.data)
     }
     const getNeeds = async () => {
-      const response = await axios.get(`http://localhost:3001/needs`)
+      const response = await axios.get(`http://localhost:3001/api/needs`)
       setNeeds(response.data)
     }
 
@@ -106,6 +108,7 @@ function App() {
               userDetails={userDetails}
               userTracks={userTracks}
               setUserTracks={setUserTracks}
+              setTrackDetails={setTrackDetails}
             />
           }
         />
@@ -118,6 +121,19 @@ function App() {
               genres={genres}
               metadata={metadata}
               needs={needs}
+            />
+          }
+        />
+        <Route
+          path="/users/:userId/updatetrack/:trackId"
+          element={
+            <UpdateTrack
+              activeUser={activeUser}
+              authenticated={authenticated}
+              genres={genres}
+              metadata={metadata}
+              needs={needs}
+              trackDetails={trackDetails}
             />
           }
         />

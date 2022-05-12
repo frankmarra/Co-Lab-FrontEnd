@@ -104,3 +104,8 @@ nav {
 .player-wrapper {
   height: 100%;
 }
+
+.player-track-pic-description img {
+  height: 20vh;
+  width: auto;
+}

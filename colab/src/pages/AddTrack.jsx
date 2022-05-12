@@ -6,8 +6,12 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
   const [trackGenres, setTrackGenres] = useState(
     new Array(genres.length).fill(false)
   )
-  const [trackMetadata, setTrackMetadata] = useState([])
-  const [trackneeds, setTrackNeeds] = useState([])
+  const [trackMetadata, setTrackMetadata] = useState(
+    new Array(metadata.length).fill(false)
+  )
+  const [trackNeeds, setTrackNeeds] = useState(
+    new Array(needs.length).fill(false)
+  )
 
   const [formValues, setFormValues] = useState({
     trackName: '',
@@ -26,16 +30,60 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
   }
 
   const handleGenreChange = (i) => {
-    let updateGenre = trackGenres.forEach((genre, index) =>
+    let updateGenres = trackGenres.map((genre, index) =>
       i === index ? !genre : genre
     )
-    setTrackGenres(updateGenre)
+    setTrackGenres(updateGenres)
+  }
+
+  const handleMetadataChange = (i) => {
+    let updateMetadata = trackMetadata.map((data, index) =>
+      i === index ? !data : data
+    )
+    setTrackMetadata(updateMetadata)
+  }
+
+  const handleNeedChange = (i) => {
+    let updateNeeds = trackNeeds.map((need, index) =>
+      i === index ? !need : need
+    )
+    setTrackNeeds(updateNeeds)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('form value: ', formValues)
-    // await axios.post(`http://localhost:3001/api/tracks/${userId}`, formValues)
+    let trackGenreChoices = []
+    let trackMetadataChoices = []
+    let trackNeedsChoices = []
+    trackGenres.forEach((genre, i) => {
+      if (genre) {
+        trackGenreChoices.push({ genreId: i + 1 })
+      }
+    })
+
+    trackMetadata.forEach((data, i) => {
+      if (data) {
+        trackMetadataChoices.push({ metadataId: i + 1 })
+      }
+    })
+    console.log(formValues)
+
+    trackNeeds.forEach((need, i) => {
+      if (need) {
+        trackNeedsChoices.push({ needId: i + 1 })
+      }
+    })
+    setFormValues({
+      ...formValues,
+      needs: trackNeedsChoices,
+      genres: trackGenreChoices,
+      metadata: trackMetadataChoices
+    })
+    await axios.post(
+      `http://localhost:3001/api/tracks/${activeUser.id}`,
+      formValues
+    )
+    navigate(`/users/${activeUser.id}`)
   }
 
   return (
@@ -69,7 +117,7 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
               onChange={handleChange}
               name="trackArt"
               type="text"
-              value={formValues.trackAudio}
+              value={formValues.trackArt}
               placeholder="optional"
             />
           </div>
@@ -87,18 +135,54 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
           </div>
           <div className="input-wrapper">
             <label htmlFor="trackGenres">Genres</label>
-            {genres.map((genre, i) => {
-              ;<select
-                key={i}
-                name={genre.genreName}
-                type="checkbox"
-                value={genre.id}
-                checked={trackGenres[i]}
-                onChange={() => handleGenreChange(i)}
-              />
-            })}
+            {genres.map((genre, i) => (
+              <div className="genre-checkbox" key={i}>
+                {genre.genreName}
+                <input
+                  name={genre.genreName}
+                  type="checkbox"
+                  value={genre.genreName}
+                  checked={trackGenres[i]}
+                  onChange={() => handleGenreChange(i)}
+                />
+              </div>
+            ))}
           </div>
+          <div className="input-wrapper">
+            <label htmlFor="trackMetadata">Metadata</label>
+            {metadata.map((data, i) => (
+              <div className="metadata-checkbox" key={i}>
+                {data.metadataName}
+                <input
+                  name={data.metadataName}
+                  type="checkbox"
+                  value={data.metadataName}
+                  checked={trackMetadata[i]}
+                  onChange={() => handleMetadataChange(i)}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="input-wrapper">
+            <label htmlFor="trackNeeds">Needs</label>
+            {needs.map((need, i) => (
+              <div className="need-checkbox" key={i}>
+                {need.needName}
+                <input
+                  name={need.metadataName}
+                  type="checkbox"
+                  value={need.meatadataName}
+                  checked={trackNeeds[i]}
+                  onChange={() => handleNeedChange(i)}
+                />
+              </div>
+            ))}
+          </div>
+          <button type="Submit">Submit</button>
         </form>
+        <button onClick={() => navigate(`/users/${activeUser.id}`)}>
+          Cancel
+        </button>
       </div>
     </div>
   )

@@ -1,24 +1,31 @@
 import ReactPlayer from 'react-player/lazy'
-import WaveSurfer from 'wavesurfer.js'
+import { useNavigate } from 'react-router-dom'
 
-const AudioPlayer = ({ track }) => {
-  // let wavesurfer = WaveSurfer.create({
-  //   container: '#waveform',
-  //   waveColor: 'violet',
-  //   progressColor: 'purple'
-  // })
-  // wavesurfer.load(
-  //   'https://res.cloudinary.com/silverbeard/video/upload/v1652029890/40_YEAR_OLD_TEENAGERV2_fzudnz.mp3',
-  //   'https://docs.google.com/uc?export=open&id=0B2Dfs3ziFiE7cWNFV3Y2ODhHT0tSc0daUmc3UmhBemp0Z0xn',
-  //   'https://docs.google.com/uc?export=open&id=0B2Dfs3ziFiE7dE41ZXNCeHhkNWQwZ1hzTjVLbDBXVHRWYUZJ'
-  // )
-  // <div id="waveform"></div>
+const AudioPlayer = ({ track, activeUser, setTrackDetails }) => {
+  let navigate = useNavigate()
   return track ? (
     <div className="player-wrapper">
       <div className="player-track-title">
         <h3>{track.trackName}</h3>
       </div>
-
+      <div className="player-track-pic-description">
+        <img src={track.trackArt} alt={track.trackName} />
+        <p>{track.trackDescription}</p>
+        {activeUser.id === track.userId ? (
+          <div className="update-track-link">
+            <button
+              onClick={() => {
+                setTrackDetails(track)
+                navigate(`/users/${activeUser.id}/updatetrack/${track.id}`)
+              }}
+            >
+              Update
+            </button>
+          </div>
+        ) : (
+          <div></div>
+        )}
+      </div>
       <ReactPlayer
         url={track.trackAudio}
         controls={true}

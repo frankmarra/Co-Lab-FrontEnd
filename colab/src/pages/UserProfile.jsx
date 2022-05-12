@@ -9,7 +9,8 @@ const UserProfile = ({
   setUserDetails,
   userDetails,
   userTracks,
-  setUserTracks
+  setUserTracks,
+  setTrackDetails
 }) => {
   let { userId } = useParams()
 
@@ -39,7 +40,11 @@ const UserProfile = ({
         <h2>{userDetails.userName}</h2>
       </div>
       <div className="user-page-content">
-        <UserAudioPlayer tracks={userTracks} />
+        <UserAudioPlayer
+          tracks={userTracks}
+          activeUser={activeUser}
+          setTrackDetails={setTrackDetails}
+        />
       </div>
       <div className="user-page-crud">
         Crud

@@ -10,6 +10,7 @@ import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import AddTrack from './pages/AddTrack'
 import UpdateTrack from './pages/UpdateTrack'
+import UpdateUser from './pages/UpdateUser'
 import CreateColab from './pages/CreateColab'
 import axios from 'axios'
 
@@ -161,6 +162,16 @@ function App() {
               activeUser={activeUser}
               authenticated={authenticated}
               userTracks={userTracks}
+            />
+          }
+        />
+        <Route
+          path="/users/:userId/update"
+          element={
+            <UpdateUser
+              activeUser={activeUser}
+              authenticated={authenticated}
+              userDetails={userDetails}
             />
           }
         />

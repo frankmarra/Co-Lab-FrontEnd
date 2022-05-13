@@ -70,6 +70,11 @@ const UserProfile = ({
               Create Co-lab
             </Link>
           </li>
+          <li>
+            <Link className="update-user-link" to={`/users/${userId}/update`}>
+              Update User
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

@@ -11,22 +11,22 @@ const AudioPlayer = ({ track, activeUser, setTrackDetails, destroyTrack }) => {
       <div className="player-track-pic-description">
         <img src={track.trackArt} alt={track.trackName} />
         <p>{track.trackDescription}</p>
-        {activeUser.id === track.userId ? (
-          <div className="update-track-link">
-            <button
-              onClick={() => {
-                setTrackDetails(track)
-                navigate(`/users/${activeUser.id}/updatetrack/${track.id}`)
-              }}
-            >
-              Update
-            </button>
-            <div className="delete-track-link"></div>
-          </div>
-        ) : (
-          <div></div>
-        )}
       </div>
+      {activeUser.id === track.userId ? (
+        <div className="update-track-link">
+          <button
+            onClick={() => {
+              setTrackDetails(track)
+              navigate(`/users/${activeUser.id}/updatetrack/${track.id}`)
+            }}
+          >
+            <i className="fa-solid fa-sliders"></i>
+          </button>
+        </div>
+      ) : (
+        <div></div>
+      )}
+
       <div className="react-player-wrapper">
         <ReactPlayer
           url={track.trackAudio}

@@ -26,6 +26,8 @@ const SearchPage = ({
     genres: [],
     metadata: []
   })
+
+  const [textSearch, setTextSearch] = useState('')
   //See ReadMe for site I used to help with this logic:
   const handleGenreChange = (i) => {
     let updateGenres = trackGenres.map((genre, index) =>
@@ -69,9 +71,20 @@ const SearchPage = ({
       }
     })
     let searchQuery = trackSearchChoices.join('')
-    console.log('search query: ', searchQuery)
     const response = await axios.get(
       `https://colabdb.herokuapp.com/api/tracks/search/data?${searchQuery}`
+    )
+    setSearchResults(response.data)
+  }
+
+  const handleTextChange = (e) => {
+    setTextSearch(e.target.value)
+  }
+
+  const handleTextSubmit = async (e) => {
+    e.preventDefault()
+    const response = await axios.get(
+      `https://colabdb.herokuapp.com/api/tracks/search/data/input?word=${textSearch}`
     )
     setSearchResults(response.data)
   }
@@ -133,8 +146,21 @@ const SearchPage = ({
         <button type="Submit">Search</button>
       </form>
       <div className="search-results-wrapper">
+        <form className="text-search" onSubmit={handleTextSubmit}>
+          <div className="input-wrapper text-search-input">
+            <input
+              onChange={handleTextChange}
+              name="textSearch"
+              type="text"
+              value={textSearch}
+            />
+          </div>
+          <button className="text-search-submit" type="Submit">
+            <i className="fa-solid fa-compact-disc"></i>
+          </button>
+        </form>
         <h2>Search Results</h2>
-        {searchResults != [] ? (
+        {searchResults.length > 0 ? (
           <div className="search-results">
             <UserAudioPlayer
               tracks={searchResults}

@@ -57,7 +57,7 @@ const UpdateTrack = ({
       })
     }
     getTrackDetails()
-  }, [genres, metadata, needs, trackDetails])
+  }, [genres, metadata, needs])
 
   let navigate = useNavigate()
   let { trackId } = useParams()
@@ -183,7 +183,6 @@ const UpdateTrack = ({
                 name="trackDescription"
                 value={formValues.trackDescription}
                 placeholder="optional"
-                form="add-track"
               >
                 This is optional
               </textarea>

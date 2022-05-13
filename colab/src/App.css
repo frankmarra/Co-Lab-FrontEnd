@@ -161,7 +161,7 @@ a:visited {
 .input-wrapper {
   display: flex;
   flex-flow: column;
-  margin: 3vh 0 0 0;
+  /* margin: 3vh 0 0 0; */
   text-align: left;
 }
 
@@ -178,28 +178,51 @@ input {
   grid-template-columns: 1fr 5fr;
 }
 
-
-
 .search-results-wrapper {
   display: flex;
   flex-flow: column;
   align-items: center;
 }
 
+.text-search {
+  display: flex;
+  justify-content: center;
+  margin: 5vh 0 0;
+}
+
+.text-search-input input {
+  padding: 8px 20px;
+
+}
+.text-search button {
+  border: none;
+  font-size: 2rem;
+}
+
 .search-results {
   width: 60%;
   overflow-x: scroll;
-  height: 80vh;
+  height: 68vh;
 }
-
-
 
 /* User Profile Active */
 
 .user-page-wrapper {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
-  /* height: 100vh; */
+}
+
+.user-info {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.user-info img {
+  border-radius: 50px;
+  height: 100px;
+  width: 100px;
+
 }
 
 .user-page-content {
@@ -285,4 +308,15 @@ input {
 .player-track-pic-description img {
   height: 20vh;
   width: auto;
+}
+
+.update-track-link {
+  grid-column: 2 /3 ;
+  text-align: right;
+}
+
+.update-track-link button {
+  border: none;
+  font-size: 1.2rem;
+  color:#1c4eb2;
 }

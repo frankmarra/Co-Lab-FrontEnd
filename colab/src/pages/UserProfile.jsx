@@ -43,8 +43,11 @@ const UserProfile = ({
     userDetails &&
     parseInt(userId) === activeUser.id ? (
     <div className="user-page-wrapper">
-      <div className="user-welcome">
+      <div className="user-info">
         <h2>{userDetails.userName}</h2>
+        <img src={userDetails.userPic} alt={userDetails.userName} />
+        <p>{userDetails.userAbout}</p>
+        <div className="user-spot-playlist"></div>
       </div>
       <div className="user-page-content">
         <UserAudioPlayer

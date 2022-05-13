@@ -21,11 +21,12 @@ const UpdateUser = ({ activeUser, authenticated, userDetails }) => {
       ...formValues,
       userName: userDetails.userName,
       userEmail: userDetails.userEmail,
+      userPic: userDetails.userPic,
       userBannerPic: userDetails.userBannerPic,
       userAbout: userDetails.userAbout,
       userSpotPlay: userDetails.userSpotPlay
     })
-  })
+  }, [])
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })

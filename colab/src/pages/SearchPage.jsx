@@ -81,48 +81,54 @@ const SearchPage = ({
       <form className="search-options" onSubmit={handleSubmit}>
         <div className="input-wrapper">
           <label htmlFor="trackGenres">Genres</label>
-          {genres.map((genre, i) => (
-            <div className="genre-checkbox" key={i}>
-              {genre.genreName}
-              <input
-                name={genre.genreName}
-                type="checkbox"
-                value={genre.genreName}
-                checked={trackGenres[i]}
-                onChange={() => handleGenreChange(i)}
-              />
-            </div>
-          ))}
+          <ul>
+            {genres.map((genre, i) => (
+              <li className="genre-checkbox" key={i}>
+                {genre.genreName}
+                <input
+                  name={genre.genreName}
+                  type="checkbox"
+                  value={genre.genreName}
+                  checked={trackGenres[i]}
+                  onChange={() => handleGenreChange(i)}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="input-wrapper">
           <label htmlFor="trackMetadata">Metadata</label>
-          {metadata.map((data, i) => (
-            <div className="metadata-checkbox" key={i}>
-              {data.metadataName}
-              <input
-                name={data.metadataName}
-                type="checkbox"
-                value={data.metadataName}
-                checked={trackMetadata[i]}
-                onChange={() => handleMetadataChange(i)}
-              />
-            </div>
-          ))}
+          <ul>
+            {metadata.map((data, i) => (
+              <li className="metadata-checkbox" key={i}>
+                {data.metadataName}
+                <input
+                  name={data.metadataName}
+                  type="checkbox"
+                  value={data.metadataName}
+                  checked={trackMetadata[i]}
+                  onChange={() => handleMetadataChange(i)}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="input-wrapper">
           <label htmlFor="trackNeeds">Needs</label>
-          {needs.map((need, i) => (
-            <div className="need-checkbox" key={i}>
-              {need.needName}
-              <input
-                name={need.metadataName}
-                type="checkbox"
-                value={need.metadataName}
-                checked={trackNeeds[i]}
-                onChange={() => handleNeedChange(i)}
-              />
-            </div>
-          ))}
+          <ul>
+            {needs.map((need, i) => (
+              <li className="need-checkbox" key={i}>
+                {need.needName}
+                <input
+                  name={need.metadataName}
+                  type="checkbox"
+                  value={need.metadataName}
+                  checked={trackNeeds[i]}
+                  onChange={() => handleNeedChange(i)}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
         <button type="Submit">Search</button>
       </form>

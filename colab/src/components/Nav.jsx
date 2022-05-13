@@ -4,46 +4,46 @@ const Nav = ({ authenticated, activeUser, handleLogOut }) => {
   let authenticatedOptions
   if (activeUser) {
     authenticatedOptions = (
-      <nav>
-        <Link to="/search">
-          <i className="fa-solid fa-magnifying-glass"></i>
-        </Link>
-        <div className="nav-title">
-          <Link to="/">Co-lab</Link>
-        </div>
-        <div className="user-buttons">
-          <Link className="user-home-link" to={`/users/${activeUser.id}`}>
-            {activeUser.userName}
-          </Link>
+      <ul className="user-buttons">
+        <li>
+          <Link to={`/users/${activeUser.id}`}>{activeUser.userName}</Link>
+        </li>
+        <li>
           <Link to="/" className="logout-button" onClick={handleLogOut}>
             Log Out
           </Link>
-        </div>
-      </nav>
+        </li>
+      </ul>
     )
   }
 
   const publicOptions = (
-    <nav>
-      <Link to="/search">
-        <i className="fa-solid fa-magnifying-glass"></i>
-      </Link>
-      <div className="nav-title">
-        <Link to="/">Co-lab</Link>
-      </div>
-      <div className="signin-signup-buttons">
-        <div className="signup-button">
-          <Link to="/register">Sign-Up</Link>
-        </div>
-        <div className="signin-button">
-          <Link to="/signin">Log-In</Link>
-        </div>
-      </div>
-    </nav>
+    <ul className="nav-buttons">
+      <li>
+        <Link to="/register">Sign-Up</Link>
+      </li>
+      <li>
+        <Link to="/signin">Log-In</Link>
+      </li>
+    </ul>
   )
   return (
     <header>
-      {authenticated && activeUser ? authenticatedOptions : publicOptions}
+      <nav>
+        <ul className="nav-search-title">
+          <li>
+            <Link to="/search">
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-title" to="/">
+              Co-lab
+            </Link>
+          </li>
+        </ul>
+        {authenticated && activeUser ? authenticatedOptions : publicOptions}
+      </nav>
     </header>
   )
 }

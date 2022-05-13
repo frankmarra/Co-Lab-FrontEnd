@@ -19,10 +19,11 @@ const Home = ({ tracks, tracksLength }) => {
             <div className="about-colab">words</div>
           </div>
         </div>
-        <div className="home-center">
-          <div className="home-title"></div>
-          <Link to="/search">Search</Link>
-        </div>
+
+        <Link className="home-search" to="/search">
+          Search
+        </Link>
+
         <div className="home-right">
           <div className="home-playlist"></div>
         </div>

@@ -34,6 +34,7 @@ const Signup = ({ setActiveUser }) => {
   return (
     <div className="signup-page-wrapper">
       <div className="signup-form-wrapper">
+        <h2>Create a New Account</h2>
         <form className="signup-form" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="name">Name</label>
@@ -78,6 +79,7 @@ const Signup = ({ setActiveUser }) => {
             />
           </div>
           <button
+            className="signup-button"
             disabled={
               !formValues.email ||
               (!formValues.password &&
@@ -87,6 +89,12 @@ const Signup = ({ setActiveUser }) => {
             Sign up
           </button>
         </form>
+      </div>
+      <div className="signup-about-wrapper">
+        <div className="signup-about">
+          <h2>Co-lab</h2>
+          <h4>Words about Co-lab</h4>
+        </div>
       </div>
     </div>
   )

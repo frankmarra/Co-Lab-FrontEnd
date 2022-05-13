@@ -24,7 +24,8 @@ const Signin = ({ setActiveUser, toggleAuthenticated }) => {
 
   return (
     <div className="signup-page-wrapper">
-      <div className="signup-form-wrapper">
+      <div className="login-form-wrapper">
+        <h2>Log-in</h2>
         <form className="signup-form" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="userEmail">Email</label>
@@ -47,7 +48,10 @@ const Signin = ({ setActiveUser, toggleAuthenticated }) => {
               required
             />
           </div>
-          <button disabled={!formValues.userEmail || !formValues.userPassword}>
+          <button
+            className="signup-button"
+            disabled={!formValues.userEmail || !formValues.userPassword}
+          >
             Sign In
           </button>
         </form>

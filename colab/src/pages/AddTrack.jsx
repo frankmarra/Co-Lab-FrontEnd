@@ -90,6 +90,7 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
   ) : (
     <div className="add-track-wrapper">
       <div className="add-track-form-wrapper">
+        <h2>Add A Track</h2>
         <form className="add-track-form" id="add-track" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="trackName">Track Name</label>
@@ -134,8 +135,10 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
               This is optional
             </textarea>
           </div>
-          <div className="input-wrapper">
-            <label htmlFor="trackGenres">Genres</label>
+          <div className="input-wrapper add-track-genres">
+            <span className="label" htmlFor="trackGenres">
+              Genres:
+            </span>
             {genres.map((genre, i) => (
               <div className="genre-checkbox" key={i}>
                 {genre.genreName}
@@ -149,8 +152,10 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
               </div>
             ))}
           </div>
-          <div className="input-wrapper">
-            <label htmlFor="trackMetadata">Metadata</label>
+          <div className="input-wrapper add-track-metadata">
+            <span className="label" htmlFor="trackMetadata">
+              Metadata:
+            </span>
             {metadata.map((data, i) => (
               <div className="metadata-checkbox" key={i}>
                 {data.metadataName}
@@ -164,8 +169,10 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
               </div>
             ))}
           </div>
-          <div className="input-wrapper">
-            <label htmlFor="trackNeeds">Needs</label>
+          <div className="input-wrapper add-track-needs">
+            <span className="label" htmlFor="trackNeeds">
+              Needs:
+            </span>
             {needs.map((need, i) => (
               <div className="need-checkbox" key={i}>
                 {need.needName}

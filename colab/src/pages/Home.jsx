@@ -24,9 +24,7 @@ const Home = ({ tracks, tracksLength }) => {
           Search
         </Link>
 
-        <div className="home-right">
-          <div className="home-playlist"></div>
-        </div>
+        <div className="random-users-wrapper"></div>
       </div>
     )
   )

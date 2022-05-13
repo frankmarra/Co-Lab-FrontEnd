@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Piazzolla:opsz@8..30&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ledger&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -69,7 +71,6 @@ nav a:visited {
   flex-flow: column;
 }
 .home-top-image-carousel {
-  /* display: flex; */
   margin: 2%;
   height: 50vh;
   overflow: hidden;
@@ -98,14 +99,78 @@ nav a:visited {
   justify-content: center;
 }
 
-
-
 .home-search {
   font-family: 'LimeLight', cursive;
   font-size: 3.5rem;
   text-decoration: none;
 }
 
+/* Sign up page */
+.signup-page-wrapper {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  font-family: 'Ledger', serif;
+  
+}
+
+.signup-form-wrapper, .login-form-wrapper, .add-track-form-wrapper {
+  border: 1px solid rgb(44, 42, 42);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  margin: 10vh 0;
+  width: 25vw;
+  text-align: center;
+  background-color: #1c4eb2;
+  color:#B6CAF2;
+}
+
+.login-form-wrapper {
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.signup-form, .add-track-form {
+  display: flex;
+  flex-flow: column;
+  background-color: #B6CAF2;
+  color:#1c4eb2;
+  align-items: center;
+  
+}
+
+.signup-button {
+  margin: 3vh;
+  width: 50%;
+  padding: 10px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  border: 1px solid #1c4eb2;
+}
+
+.signup-about-wrapper {
+  border: 1px solid rgb(44, 42, 42);
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-left: none;
+  margin: 10vh 0;
+  width: 25vh;
+  
+}
+
+.input-wrapper {
+  display: flex;
+  flex-flow: column;
+  margin: 3vh 0 0 0;
+  text-align: left;
+}
+
+input {
+  font-size: 1.1rem;
+  border: 1px solid #1c4eb2;
+  border-radius: 30px;
+  padding: 5px 15px;
+}
 /* Search Page */
 
 .search-page-wrapper{
@@ -113,10 +178,7 @@ nav a:visited {
   grid-template-columns: 1fr 5fr;
 }
 
-.genre-checkbox, .metadata-checkbox, .need-checkbox {
-  border: 1px solid black;
-  margin: 1px 0;
-}
+
 
 .search-results-wrapper {
   display: flex;
@@ -129,6 +191,8 @@ nav a:visited {
   overflow-x: scroll;
   height: 80vh;
 }
+
+
 
 /* User Profile Active */
 
@@ -151,6 +215,37 @@ nav a:visited {
   
 }
 
+/* Add Track */
+
+.add-track-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.add-track-form-wrapper {
+  border-radius: 3px;
+  /* padding: 5%; */
+  width: 60%;
+}
+
+.add-track-genres {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.add-track-metadata, .add-track-needs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
+}
+.label {
+  grid-column: 1 /-1;
+}
+.genre-checkbox, .metadata-checkbox, .need-checkbox {
+  display: flex;
+  justify-content: space-between;
+}
 /* Audio Player */
 .player-wrapper {
   border: 1px solid black;

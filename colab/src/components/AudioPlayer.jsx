@@ -21,19 +21,7 @@ const AudioPlayer = ({ track, activeUser, setTrackDetails, destroyTrack }) => {
             >
               Update
             </button>
-            <div className="delete-track-link">
-              <button
-                onClick={() =>
-                  window.confirm(
-                    `Are you sure you want to delete ${track.trackName}?`
-                  )
-                    ? destroyTrack(track.id)
-                    : console.log('canceled')
-                }
-              >
-                Delete
-              </button>
-            </div>
+            <div className="delete-track-link"></div>
           </div>
         ) : (
           <div></div>
@@ -56,3 +44,15 @@ const AudioPlayer = ({ track, activeUser, setTrackDetails, destroyTrack }) => {
 }
 
 export default AudioPlayer
+
+// <button
+//                 onClick={() =>
+//                   window.confirm(
+//                     `Are you sure you want to delete ${track.trackName}?`
+//                   )
+//                     ? destroyTrack(track.id)
+//                     : console.log('canceled')
+//                 }
+//               >
+//                 Delete
+//               </button>

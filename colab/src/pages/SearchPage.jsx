@@ -1,7 +1,16 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import UserAudioPlayer from '../components/UserAudioPlayer'
 
-const SearchPage = ({ genres, metadata, needs, activeUser, authenticated }) => {
+const SearchPage = ({
+  genres,
+  metadata,
+  needs,
+  activeUser,
+  authenticated,
+  setTrackDetails,
+  destroyTrack
+}) => {
   const [trackGenres, setTrackGenres] = useState(
     new Array(genres.length).fill(false)
   )
@@ -11,7 +20,7 @@ const SearchPage = ({ genres, metadata, needs, activeUser, authenticated }) => {
   const [trackNeeds, setTrackNeeds] = useState(
     new Array(needs.length).fill(false)
   )
-
+  const [searchResults, setSearchResults] = useState([])
   const [formValues, setFormValues] = useState({
     needs: [],
     genres: [],
@@ -44,7 +53,7 @@ const SearchPage = ({ genres, metadata, needs, activeUser, authenticated }) => {
     let trackSearchChoices = []
     trackGenres.forEach((genre, i) => {
       if (genre) {
-        trackSearchChoices.push(`&genre=${i + 1}`)
+        trackSearchChoices.push(`&genres=${i + 1}`)
       }
     })
 
@@ -56,13 +65,15 @@ const SearchPage = ({ genres, metadata, needs, activeUser, authenticated }) => {
 
     trackNeeds.forEach((need, i) => {
       if (need) {
-        trackSearchChoices.push(`&need=${i + 1}`)
+        trackSearchChoices.push(`&needs=${i + 1}`)
       }
     })
     let searchQuery = trackSearchChoices.join('')
-    await axios.get(
+    console.log('search query: ', searchQuery)
+    const response = await axios.get(
       `http://localhost:3001/api/tracks/search/data?${searchQuery}`
     )
+    setSearchResults(response.data)
   }
 
   return (
@@ -106,7 +117,7 @@ const SearchPage = ({ genres, metadata, needs, activeUser, authenticated }) => {
               <input
                 name={need.metadataName}
                 type="checkbox"
-                value={need.meatadataName}
+                value={need.metadataName}
                 checked={trackNeeds[i]}
                 onChange={() => handleNeedChange(i)}
               />
@@ -115,6 +126,23 @@ const SearchPage = ({ genres, metadata, needs, activeUser, authenticated }) => {
         </div>
         <button type="Submit">Search</button>
       </form>
+      <div className="search-results-wrapper">
+        <h2>Search Results</h2>
+        {searchResults != [] ? (
+          <div className="search-results">
+            <UserAudioPlayer
+              tracks={searchResults}
+              activeUser={activeUser}
+              setTrackDetails={setTrackDetails}
+              destroyTrack={destroyTrack}
+            />
+          </div>
+        ) : (
+          <div className="no-search-results">
+            <h3>There are no results</h3>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

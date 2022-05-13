@@ -16,7 +16,7 @@ import axios from 'axios'
 // const UserContext = createContext()
 
 function App() {
-  const [activeUser, setActiveUser] = useState(null)
+  const [activeUser, setActiveUser] = useState({ id: 0, userName: 'guest' })
   const [authenticated, toggleAuthenticated] = useState(false)
   const [genres, setGenres] = useState()
   const [metadata, setMetadata] = useState()
@@ -80,7 +80,13 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home tracks={tracks} tracksLength={tracksLength} />}
+          element={
+            <Home
+              tracks={tracks}
+              tracksLength={tracksLength}
+              activeUser={activeUser}
+            />
+          }
         />
         <Route
           path="/register"
@@ -156,9 +162,8 @@ function App() {
               genres={genres}
               metadata={metadata}
               needs={needs}
-              setGenres={setGenres}
-              setMetadata={setMetadata}
-              setNeeds={setNeeds}
+              setTrackDetails={setTrackDetails}
+              activeUser={activeUser}
             />
           }
         />

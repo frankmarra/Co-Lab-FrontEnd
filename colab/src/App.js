@@ -34,21 +34,29 @@ function App() {
     }
 
     const getTracks = async () => {
-      const response = await axios.get(`http://localhost:3001/api/tracks`)
+      const response = await axios.get(
+        `https://colabdb.herokuapp.com/api/tracks`
+      )
       setTracks(response.data)
       setTracksLength(response.data.length)
     }
 
     const getGenres = async () => {
-      const response = await axios.get(`http://localhost:3001/api/genres`)
+      const response = await axios.get(
+        `https://colabdb.herokuapp.com/api/genres`
+      )
       setGenres(response.data)
     }
     const getMetadata = async () => {
-      const response = await axios.get(`http://localhost:3001/api/metadata`)
+      const response = await axios.get(
+        `https://colabdb.herokuapp.com/api/metadata`
+      )
       setMetadata(response.data)
     }
     const getNeeds = async () => {
-      const response = await axios.get(`http://localhost:3001/api/needs`)
+      const response = await axios.get(
+        `https://colabdb.herokuapp.com/api/needs`
+      )
       setNeeds(response.data)
     }
 
@@ -142,6 +150,7 @@ function App() {
               metadata={metadata}
               needs={needs}
               trackDetails={trackDetails}
+              setTrackDetails={setTrackDetails}
             />
           }
         />

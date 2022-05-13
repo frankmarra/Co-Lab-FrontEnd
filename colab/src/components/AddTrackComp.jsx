@@ -5,7 +5,10 @@ const AddTrackComp = ({ formValues, setCreateReady }) => {
   let { userId } = useParams()
   let navigate = useNavigate()
   const update = async () => {
-    await axios.post(`http://localhost:3001/api/tracks/${userId}`, formValues)
+    await axios.post(
+      `https://colabdb.herokuapp.com/api/tracks/${userId}`,
+      formValues
+    )
     navigate(`/users/${userId}`)
   }
 

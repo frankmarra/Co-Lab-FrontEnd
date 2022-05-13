@@ -17,7 +17,7 @@ const UserProfile = ({
   useEffect(() => {
     const getUserDetails = async () => {
       const response = await axios.get(
-        `http://localhost:3001/api/users/${userId}`
+        `https://colabdb.herokuapp.com/api/users/${userId}`
       )
       setUserDetails(response.data)
     }
@@ -28,13 +28,13 @@ const UserProfile = ({
 
   const getUserTracks = async () => {
     const response = await axios.get(
-      `http://localhost:3001/api/users/${userId}/tracks`
+      `https://colabdb.herokuapp.com/api/users/${userId}/tracks`
     )
     setUserTracks(response.data)
   }
 
   const destroyTrack = async (trackId) => {
-    await axios.delete(`http://localhost:3001/api/tracks/${trackId}`)
+    await axios.delete(`https://colabdb.herokuapp.com/api/tracks/${trackId}`)
     getUserTracks()
   }
 
@@ -56,8 +56,21 @@ const UserProfile = ({
       </div>
       <div className="user-page-crud">
         Crud
-        <Link to={`/users/${userId}/addtrack`}>Add Track</Link>
-        <Link to={`/users/${userId}/createcolab`}>Create Co-lab</Link>
+        <ul>
+          <li>
+            <Link className="add-track-link" to={`/users/${userId}/addtrack`}>
+              Add Track
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="create-colab-link"
+              to={`/users/${userId}/createcolab`}
+            >
+              Create Co-lab
+            </Link>
+          </li>
+        </ul>
       </div>
     </div>
   ) : (

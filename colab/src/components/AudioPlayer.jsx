@@ -27,16 +27,20 @@ const AudioPlayer = ({ track, activeUser, setTrackDetails, destroyTrack }) => {
           <div></div>
         )}
       </div>
-      <ReactPlayer
-        url={track.trackAudio}
-        controls={true}
-        height="50px"
-        config={{
-          file: {
-            forceAudio: true
-          }
-        }}
-      />
+      <div className="react-player-wrapper">
+        <ReactPlayer
+          url={track.trackAudio}
+          className="react-player"
+          controls={true}
+          height="100%"
+          width="100%"
+          config={{
+            file: {
+              forceAudio: true
+            }
+          }}
+        />
+      </div>
     </div>
   ) : (
     <div></div>

@@ -71,7 +71,7 @@ const SearchPage = ({
     let searchQuery = trackSearchChoices.join('')
     console.log('search query: ', searchQuery)
     const response = await axios.get(
-      `http://localhost:3001/api/tracks/search/data?${searchQuery}`
+      `https://colabdb.herokuapp.com/api/tracks/search/data?${searchQuery}`
     )
     setSearchResults(response.data)
   }

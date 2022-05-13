@@ -9,23 +9,18 @@ const UpdateTrack = ({
   needs,
   activeUser,
   authenticated,
-  trackDetails
+  trackDetails,
+  setTrackDetails
 }) => {
-  const [trackGenres, setTrackGenres] = useState(
-    new Array(genres.length).fill(false)
-  )
-  const [trackMetadata, setTrackMetadata] = useState(
-    new Array(metadata.length).fill(false)
-  )
-  const [trackNeeds, setTrackNeeds] = useState(
-    new Array(needs.length).fill(false)
-  )
-
+  const [trackGenres, setTrackGenres] = useState([])
+  const [trackMetadata, setTrackMetadata] = useState([])
+  const [trackNeeds, setTrackNeeds] = useState([])
+  const [updateReady, setUpdateReady] = useState(false)
   const [formValues, setFormValues] = useState({
-    trackName: trackDetails.trackName,
-    trackDescription: trackDetails.trackDescription,
-    trackAudio: trackDetails.trackAudio,
-    trackArt: trackDetails.trackArt,
+    trackName: '',
+    trackDescription: '',
+    trackAudio: '',
+    trackArt: '',
     addNeeds: [],
     addGenres: [],
     addMetadata: [],
@@ -35,7 +30,34 @@ const UpdateTrack = ({
     userId: activeUser.id
   })
 
-  const [updateReady, setUpdateReady] = useState(false)
+  useEffect(() => {
+    const getTrackDetails = async () => {
+      const response = await axios.get(
+        `https://colabdb.herokuapp.com/api/tracks/${trackId}`
+      )
+      setTrackDetails(response.data)
+    }
+
+    if (genres) {
+      setTrackGenres(new Array(genres.length).fill(false))
+    }
+    if (metadata) {
+      setTrackMetadata(new Array(metadata.length).fill(false))
+    }
+    if (needs) {
+      setTrackNeeds(new Array(needs.length).fill(false))
+    }
+    if (trackDetails) {
+      setFormValues({
+        ...formValues,
+        trackName: trackDetails.trackName,
+        trackDescription: trackDetails.trackDescription,
+        trackAudio: trackDetails.trackAudio,
+        trackArt: trackDetails.trackArt
+      })
+    }
+    getTrackDetails()
+  }, [genres, metadata, needs, trackDetails])
 
   let navigate = useNavigate()
   let { trackId } = useParams()
@@ -109,107 +131,118 @@ const UpdateTrack = ({
     setUpdateReady(true)
   }
 
-  return updateReady ? (
-    <UpdateTrackComp formValues={formValues} setUpdateReady={setUpdateReady} />
-  ) : (
-    <div className="add-track-wrapper">
-      <div className="add-track-form-wrapper">
-        <form className="add-track-form" id="add-track" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <label htmlFor="trackName">Track Name</label>
-            <input
-              onChange={handleChange}
-              name="trackName"
-              type="text"
-              value={formValues.trackName}
-              required
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="trackAudio">Track Audio Link</label>
-            <input
-              onChange={handleChange}
-              name="trackAudio"
-              type="text"
-              value={formValues.trackAudio}
-              placeholder="http://www.example.com/example.mp3"
-              required
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="trackArt">Track Art Link</label>
-            <input
-              onChange={handleChange}
-              name="trackArt"
-              type="text"
-              value={formValues.trackArt}
-              placeholder="optional"
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="trackDescription">Track Description</label>
-            <textarea
-              onChange={handleChange}
-              name="trackDescription"
-              value={formValues.trackDescription}
-              placeholder="optional"
-              form="add-track"
-            >
-              This is optional
-            </textarea>
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="trackGenres">Genres</label>
-            {genres.map((genre, i) => (
-              <div className="genre-checkbox" key={i}>
-                {genre.genreName}
-                <input
-                  name={genre.genreName}
-                  type="checkbox"
-                  value={genre.genreName}
-                  checked={trackGenres[i]}
-                  onChange={() => handleGenreChange(i)}
-                />
-              </div>
-            ))}
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="trackMetadata">Metadata</label>
-            {metadata.map((data, i) => (
-              <div className="metadata-checkbox" key={i}>
-                {data.metadataName}
-                <input
-                  name={data.metadataName}
-                  type="checkbox"
-                  value={data.metadataName}
-                  checked={trackMetadata[i]}
-                  onChange={() => handleMetadataChange(i)}
-                />
-              </div>
-            ))}
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="trackNeeds">Needs</label>
-            {needs.map((need, i) => (
-              <div className="need-checkbox" key={i}>
-                {need.needName}
-                <input
-                  name={need.metadataName}
-                  type="checkbox"
-                  value={need.metadataName}
-                  checked={trackNeeds[i]}
-                  onChange={() => handleNeedChange(i)}
-                />
-              </div>
-            ))}
-          </div>
-          <button type="Submit">Submit</button>
-        </form>
-        <button onClick={() => navigate(`/users/${activeUser.id}`)}>
-          Cancel
-        </button>
+  return genres && needs && metadata && trackDetails ? (
+    updateReady ? (
+      <UpdateTrackComp
+        formValues={formValues}
+        setUpdateReady={setUpdateReady}
+      />
+    ) : (
+      <div className="add-track-wrapper">
+        <div className="add-track-form-wrapper">
+          <form
+            className="add-track-form"
+            id="add-track"
+            onSubmit={handleSubmit}
+          >
+            <div className="input-wrapper">
+              <label htmlFor="trackName">Track Name</label>
+              <input
+                onChange={handleChange}
+                name="trackName"
+                type="text"
+                value={formValues.trackName}
+                required
+              />
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="trackAudio">Track Audio Link</label>
+              <input
+                onChange={handleChange}
+                name="trackAudio"
+                type="text"
+                value={formValues.trackAudio}
+                placeholder="http://www.example.com/example.mp3"
+                required
+              />
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="trackArt">Track Art Link</label>
+              <input
+                onChange={handleChange}
+                name="trackArt"
+                type="text"
+                value={formValues.trackArt}
+                placeholder="optional"
+              />
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="trackDescription">Track Description</label>
+              <textarea
+                onChange={handleChange}
+                name="trackDescription"
+                value={formValues.trackDescription}
+                placeholder="optional"
+                form="add-track"
+              >
+                This is optional
+              </textarea>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="trackGenres">Genres</label>
+              {genres.map((genre, i) => (
+                <div className="genre-checkbox" key={i}>
+                  {genre.genreName}
+                  <input
+                    name={genre.genreName}
+                    type="checkbox"
+                    value={genre.genreName}
+                    checked={trackGenres[i]}
+                    onChange={() => handleGenreChange(i)}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="trackMetadata">Metadata</label>
+              {metadata.map((data, i) => (
+                <div className="metadata-checkbox" key={i}>
+                  {data.metadataName}
+                  <input
+                    name={data.metadataName}
+                    type="checkbox"
+                    value={data.metadataName}
+                    checked={trackMetadata[i]}
+                    onChange={() => handleMetadataChange(i)}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="trackNeeds">Needs</label>
+              {needs.map((need, i) => (
+                <div className="need-checkbox" key={i}>
+                  {need.needName}
+                  <input
+                    name={need.metadataName}
+                    type="checkbox"
+                    value={need.metadataName}
+                    checked={trackNeeds[i]}
+                    onChange={() => handleNeedChange(i)}
+                  />
+                </div>
+              ))}
+            </div>
+            <button type="Submit">Submit</button>
+          </form>
+          <button onClick={() => navigate(`/users/${activeUser.id}`)}>
+            Cancel
+          </button>
+        </div>
       </div>
-    </div>
+    )
+  ) : (
+    <div>Loading...</div>
   )
 }
 

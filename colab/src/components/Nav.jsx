@@ -4,7 +4,7 @@ const Nav = ({ authenticated, activeUser, handleLogOut }) => {
   let authenticatedOptions
   if (activeUser) {
     authenticatedOptions = (
-      <ul className="user-buttons">
+      <ul className="nav-buttons">
         <li>
           <Link to={`/users/${activeUser.id}`}>{activeUser.userName}</Link>
         </li>

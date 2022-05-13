@@ -27,11 +27,11 @@ nav {
   width: 100%;
 }
 
-nav a {
+a  {
   text-decoration: none;
 }
 
-nav a:visited {
+a:visited {
   color: #1c4eb2;
 }
 
@@ -51,7 +51,7 @@ nav a:visited {
   display: flex;
   
 }
-.nav-buttons li {
+.nav-buttons li, .user-page-crud li {
   
   border: 1px solid #3876F2;
   margin: 0 20px;
@@ -60,7 +60,7 @@ nav a:visited {
   transition: 0.3s;
 }
 
-.nav-buttons li:hover {
+.nav-buttons li:hover, .user-page-crud li:hover {
   box-shadow: 0 0 2px 2px #c27cdf;
 }
 
@@ -198,23 +198,34 @@ input {
 
 .user-page-wrapper {
   display: grid;
-  grid-template-columns: 1fr 7fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
   /* height: 100vh; */
 }
 
 .user-page-content {
   grid-column: 2 / 3;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+
 }
 
 .user-tracks {
   display: flex;
   flex-flow: column;
   width: 100%;
-  
+  overflow-x: scroll;
+  height: 85vh;
 }
 
+.user-page-crud {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.user-page-crud li {
+  margin: 3vh;
+  padding: 10px;
+  text-align: center;
+}
 /* Add Track */
 
 .add-track-wrapper {
@@ -248,13 +259,29 @@ input {
 }
 /* Audio Player */
 .player-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   border: 1px solid black;
   margin: 10px 0;
-  padding: 0 0 0 5%;
+  padding: 0 5% 0 ;
   box-shadow: 0 2px 3px 0 rgba(47, 47, 47, 0.5);
-  width: 100%;
+
 }
 
+.player-track-title {
+  grid-column: 1 / -1;
+}
+
+.react-player-wrapper {
+  grid-column: 1 / -1;
+  position: relative;
+  padding-top: 50px;
+}
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .player-track-pic-description img {
   height: 20vh;
   width: auto;

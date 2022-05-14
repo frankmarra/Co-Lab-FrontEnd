@@ -1,5 +1,5 @@
 import ReactPlayer from 'react-player/lazy'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 const AudioPlayer = ({ track, activeUser, setTrackDetails, destroyTrack }) => {
   let navigate = useNavigate()
@@ -12,21 +12,32 @@ const AudioPlayer = ({ track, activeUser, setTrackDetails, destroyTrack }) => {
         <img src={track.trackArt} alt={track.trackName} />
         <p>{track.trackDescription}</p>
       </div>
-      {activeUser.id === track.userId ? (
-        <div className="update-track-link">
-          <button
-            onClick={() => {
-              setTrackDetails(track)
-              navigate(`/users/${activeUser.id}/updatetrack/${track.id}`)
-            }}
-          >
-            <i className="fa-solid fa-sliders"></i>
-          </button>
-        </div>
-      ) : (
-        <div></div>
-      )}
-
+      <div className="play-track-update-details">
+        {activeUser.id === track.userId ? (
+          <div className="update-track-link">
+            <button
+              onClick={() => {
+                setTrackDetails(track)
+                navigate(`/users/${activeUser.id}/updatetrack/${track.id}`)
+              }}
+            >
+              <i className="fa-solid fa-sliders"></i>
+            </button>
+          </div>
+        ) : (
+          <div className="link-to-user-page">
+            <h3>
+              Track by:{' '}
+              <span>
+                <Link className="user-page-link" to={`/users/${track.userId}`}>
+                  {track.userTrack.userName}
+                </Link>
+              </span>
+            </h3>
+          </div>
+        )}
+        <div className="player-track-data"></div>
+      </div>
       <div className="react-player-wrapper">
         <ReactPlayer
           url={track.trackAudio}

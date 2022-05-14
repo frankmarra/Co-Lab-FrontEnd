@@ -97,7 +97,8 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
     ) : (
       <div className="add-track-wrapper">
         <div className="add-track-form-wrapper">
-          <h2>Add A Track</h2>
+          <div className="heading-font">add a</div>
+          <div className="heading-alt-font">Track</div>
           <form
             className="add-track-form"
             id="add-track"
@@ -142,66 +143,69 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
                 value={formValues.trackDescription}
                 placeholder="optional"
                 form="add-track"
+                rows="4"
+                cols="50"
               >
                 This is optional
               </textarea>
             </div>
-            <div className="input-wrapper add-track-genres">
-              <span className="label" htmlFor="trackGenres">
-                Genres:
-              </span>
-              {genres.map((genre, i) => (
-                <div className="genre-checkbox" key={i}>
-                  {genre.genreName}
-                  <input
-                    name={genre.genreName}
-                    type="checkbox"
-                    value={genre.genreName}
-                    checked={trackGenres[i]}
-                    onChange={() => handleGenreChange(i)}
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="input-wrapper add-track-metadata">
-              <span className="label" htmlFor="trackMetadata">
-                Metadata:
-              </span>
-              {metadata.map((data, i) => (
-                <div className="metadata-checkbox" key={i}>
-                  {data.metadataName}
-                  <input
-                    name={data.metadataName}
-                    type="checkbox"
-                    value={data.metadataName}
-                    checked={trackMetadata[i]}
-                    onChange={() => handleMetadataChange(i)}
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="input-wrapper add-track-needs">
-              <span className="label" htmlFor="trackNeeds">
-                Needs:
-              </span>
-              {needs.map((need, i) => (
-                <div className="need-checkbox" key={i}>
-                  {need.needName}
-                  <input
-                    name={need.metadataName}
-                    type="checkbox"
-                    value={need.meatadataName}
-                    checked={trackNeeds[i]}
-                    onChange={() => handleNeedChange(i)}
-                  />
-                </div>
-              ))}
+            <div className="descriptor-wrapper">
+              <ul className="input-wrapper add-track-genres">
+                <span className="label" htmlFor="trackGenres">
+                  Genres
+                </span>
+                {genres.map((genre, i) => (
+                  <li className="genre-checkbox" key={i}>
+                    <input
+                      type="checkbox"
+                      value={genre.genreName}
+                      checked={trackGenres[i]}
+                      onChange={() => handleGenreChange(i)}
+                    />
+                    <label htmlFor={genre.genreName}>{genre.genreName}</label>
+                  </li>
+                ))}
+              </ul>
+              <ul className="input-wrapper add-track-metadata">
+                <span className="label" htmlFor="trackMetadata">
+                  Moods
+                </span>
+                {metadata.map((data, i) => (
+                  <li className="metadata-checkbox" key={i}>
+                    <input
+                      type="checkbox"
+                      value={data.metadataName}
+                      checked={trackMetadata[i]}
+                      onChange={() => handleMetadataChange(i)}
+                    />
+                    <label htmlFor={data.metadataName}>
+                      {data.metadataName}
+                    </label>
+                  </li>
+                ))}
+              </ul>
+              <ul className="input-wrapper add-track-needs">
+                <span className="label" htmlFor="trackNeeds">
+                  Needs
+                </span>
+                {needs.map((need, i) => (
+                  <li className="need-checkbox" key={i}>
+                    <input
+                      type="checkbox"
+                      value={need.needName}
+                      checked={trackNeeds[i]}
+                      onChange={() => handleNeedChange(i)}
+                    />
+                    <label htmlFor={need.needName}>{need.needName}</label>
+                  </li>
+                ))}
+              </ul>
             </div>
             <button type="Submit">Submit</button>
+            <button onClick={() => navigate(`/users/${activeUser.id}`)}>
+              Cancel
+            </button>
           </form>
-          <button onClick={() => navigate(`/users/${activeUser.id}`)}>
-            Cancel
-          </button>
         </div>
       </div>
     )

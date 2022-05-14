@@ -68,7 +68,7 @@ function App() {
   }, [])
 
   const handleLogOut = () => {
-    setActiveUser(null)
+    setActiveUser({ id: 0, userName: 'guest' })
     toggleAuthenticated(false)
     localStorage.clear()
   }

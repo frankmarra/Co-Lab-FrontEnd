@@ -11,15 +11,9 @@ const SearchPage = ({
   setTrackDetails,
   destroyTrack
 }) => {
-  const [trackGenres, setTrackGenres] = useState(
-    new Array(genres.length).fill(false)
-  )
-  const [trackMetadata, setTrackMetadata] = useState(
-    new Array(metadata.length).fill(false)
-  )
-  const [trackNeeds, setTrackNeeds] = useState(
-    new Array(needs.length).fill(false)
-  )
+  const [trackGenres, setTrackGenres] = useState([])
+  const [trackMetadata, setTrackMetadata] = useState([])
+  const [trackNeeds, setTrackNeeds] = useState([])
   const [searchResults, setSearchResults] = useState([])
   const [formValues, setFormValues] = useState({
     needs: [],
@@ -28,6 +22,18 @@ const SearchPage = ({
   })
 
   const [textSearch, setTextSearch] = useState('')
+  useEffect(() => {
+    if (genres) {
+      setTrackGenres(new Array(genres.length).fill(false))
+    }
+    if (metadata) {
+      setTrackMetadata(new Array(metadata.length).fill(false))
+    }
+    if (needs) {
+      setTrackNeeds(new Array(needs.length).fill(false))
+    }
+  }, [genres, metadata, needs])
+
   //See ReadMe for site I used to help with this logic:
   const handleGenreChange = (i) => {
     let updateGenres = trackGenres.map((genre, index) =>
@@ -156,7 +162,7 @@ const SearchPage = ({
             />
           </div>
           <button className="text-search-submit" type="Submit">
-            <i className="fa-solid fa-compact-disc"></i>
+            <i className="fa-solid fa-compact-disc" title="search"></i>
           </button>
         </form>
         <h2>Search Results</h2>

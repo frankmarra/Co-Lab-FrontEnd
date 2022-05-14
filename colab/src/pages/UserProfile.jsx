@@ -60,24 +60,18 @@ const UserProfile = ({
       <div className="user-page-crud">
         Crud
         <ul>
-          <li>
-            <Link className="add-track-link" to={`/users/${userId}/addtrack`}>
-              Add Track
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="create-colab-link"
-              to={`/users/${userId}/createcolab`}
-            >
-              Create Co-lab
-            </Link>
-          </li>
-          <li>
-            <Link className="update-user-link" to={`/users/${userId}/update`}>
-              Update User
-            </Link>
-          </li>
+          <Link className="add-track-link" to={`/users/${userId}/addtrack`}>
+            <li>Add Track</li>
+          </Link>
+          <Link
+            className="create-colab-link"
+            to={`/users/${userId}/createcolab`}
+          >
+            <li>Create Co-lab</li>
+          </Link>
+          <Link className="update-user-link" to={`/users/${userId}/update`}>
+            <li>Update User</li>
+          </Link>
         </ul>
       </div>
     </div>

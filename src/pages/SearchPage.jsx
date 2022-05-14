@@ -81,8 +81,6 @@ const SearchPage = ({
       `https://colabdb.herokuapp.com/api/tracks/search/data?${searchQuery}`
     )
     setSearchResults(response.data)
-    console.log('response: ', response.data)
-    console.log('search results: ', searchResults)
   }
 
   const handleTextChange = (e) => {
@@ -95,6 +93,9 @@ const SearchPage = ({
       `https://colabdb.herokuapp.com/api/tracks/search/data/input?word=${textSearch}`
     )
     setSearchResults(response.data)
+    setTrackGenres(new Array(genres.length).fill(false))
+    setTrackMetadata(new Array(genres.length).fill(false))
+    setTrackNeeds(new Array(genres.length).fill(false))
   }
 
   return genres && metadata && needs ? (

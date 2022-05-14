@@ -1,5 +1,5 @@
 const TrackNeeds = ({ track }) => {
-  if (track.needs === []) {
+  if (!track.needs) {
     return <li>No Needs Picked</li>
   } else if (!Array.isArray(track.needs)) {
     return <li>{track.needs.needName}</li>

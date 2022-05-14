@@ -1,5 +1,5 @@
 const TrackGenres = ({ track }) => {
-  if (track.genres === []) {
+  if (!track.genres) {
     return <li>No Genres Picked</li>
   } else if (!Array.isArray(track.genres)) {
     return <li>{track.genres.genreName}</li>

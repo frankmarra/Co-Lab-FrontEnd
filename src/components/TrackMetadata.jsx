@@ -1,5 +1,5 @@
 const TrackMetadata = ({ track }) => {
-  if (track.metadata == []) {
+  if (!track.metadata) {
     return <li>No Metadata Picked</li>
   } else if (!Array.isArray(track.metadata)) {
     return <li>{track.metadata.metadataName}</li>

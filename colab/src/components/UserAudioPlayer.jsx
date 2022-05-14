@@ -4,18 +4,8 @@ const UserAudioPlayer = ({
   tracks,
   activeUser,
   setTrackDetails,
-  destroyTrack
+  userDetails
 }) => {
-  // let trackArray = []
-  // console.log(tracks)
-  // if (!Array.isArray(tracks)) {
-  //   trackArray.push(tracks)
-  // } else {
-  //   tracks.forEach((track) => {
-  //     trackArray.push(track)
-  //   })
-  // }
-  // console.log('track array: ', track)
   return (
     tracks && (
       <div className="user-tracks">
@@ -25,7 +15,7 @@ const UserAudioPlayer = ({
             key={track.id}
             activeUser={activeUser}
             setTrackDetails={setTrackDetails}
-            destroyTrack={destroyTrack}
+            userDetails={userDetails}
           />
         ))}
       </div>

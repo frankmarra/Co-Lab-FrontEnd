@@ -353,3 +353,14 @@ input {
   font-size: 1.2rem;
   color:#1c4eb2;
 }
+
+.player-track-data {
+  display: flex;
+}
+
+.player-track-needs, .player-track-genres, .player-track-metadata {
+  display: flex;
+  flex-flow: column;
+  margin: 0 10px;
+  justify-content: flex-start;
+}

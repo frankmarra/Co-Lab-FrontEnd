@@ -15,27 +15,19 @@ const UserProfile = ({
   let { userId } = useParams()
 
   useEffect(() => {
-    const getUserDetails = async () => {
-      const response = await axios.get(
-        `https://colabdb.herokuapp.com/api/users/${userId}`
-      )
-      setUserDetails(response.data)
-    }
-
     getUserDetails()
-    getUserTracks()
-  }, [userId, setUserDetails, setUserTracks])
+  }, [userId, userDetails])
 
-  const getUserTracks = async () => {
+  const getUserDetails = async () => {
     const response = await axios.get(
-      `https://colabdb.herokuapp.com/api/users/${userId}/tracks`
+      `https://colabdb.herokuapp.com/api/users/${userId}`
     )
-    setUserTracks(response.data)
+    setUserDetails(response.data)
   }
 
   const destroyTrack = async (trackId) => {
     await axios.delete(`https://colabdb.herokuapp.com/api/tracks/${trackId}`)
-    getUserTracks()
+    getUserDetails()
   }
 
   return activeUser &&
@@ -51,10 +43,10 @@ const UserProfile = ({
       </div>
       <div className="user-page-content">
         <UserAudioPlayer
-          tracks={userTracks}
+          tracks={userDetails.Tracks}
           activeUser={activeUser}
           setTrackDetails={setTrackDetails}
-          destroyTrack={destroyTrack}
+          userDetails={userDetails}
         />
       </div>
       <div className="user-page-crud">
@@ -75,10 +67,25 @@ const UserProfile = ({
         </ul>
       </div>
     </div>
-  ) : (
-    <div className="protected">
-      <h3>Please log in...</h3>
+  ) : userDetails ? (
+    <div className="user-page-wrapper">
+      <div className="user-info">
+        <h2>{userDetails.userName}</h2>
+        <img src={userDetails.userPic} alt={userDetails.userName} />
+        <p>{userDetails.userAbout}</p>
+        <div className="user-spot-playlist"></div>
+      </div>
+      <div className="user-page-content">
+        <UserAudioPlayer
+          tracks={userDetails.Tracks}
+          activeUser={activeUser}
+          setTrackDetails={setTrackDetails}
+          userDetails={userDetails}
+        />
+      </div>
     </div>
+  ) : (
+    <div>Loading...</div>
   )
 }
 

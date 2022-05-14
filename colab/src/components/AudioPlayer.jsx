@@ -1,8 +1,32 @@
 import ReactPlayer from 'react-player/lazy'
 import { useNavigate, Link } from 'react-router-dom'
+import TrackGenres from './TrackGenres'
+import TrackMetadata from './TrackMetadata'
+import TrackNeeds from './TrackNeeds'
 
-const AudioPlayer = ({ track, activeUser, setTrackDetails, destroyTrack }) => {
+const AudioPlayer = ({ track, activeUser, setTrackDetails, userDetails }) => {
   let navigate = useNavigate()
+
+  // const showGenres = () => {
+  //   if (track.genres == []) {
+  //     return <div className="player-track-genres">No Genres Picked</div>
+  //   } else if (typeof track.genres === 'object') {
+  //     return (
+  //       <ul className="player-track-genres">
+  //         <li>{track.genres.genreName}</li>
+  //       </ul>
+  //     )
+  //   } else {
+  //     return (
+  //       <ul className="player-track-genres">
+  //         {track.genres.map((genre) => (
+  //           <li>{genre.genreName}</li>
+  //         ))}
+  //       </ul>
+  //     )
+  //   }
+  // }
+
   return track ? (
     <div className="player-wrapper">
       <div className="player-track-title">
@@ -24,6 +48,17 @@ const AudioPlayer = ({ track, activeUser, setTrackDetails, destroyTrack }) => {
               <i className="fa-solid fa-sliders"></i>
             </button>
           </div>
+        ) : userDetails ? (
+          <div className="link-to-user-page">
+            <h3>
+              Track by:{' '}
+              <span>
+                <Link className="user-page-link" to={`/users/${track.userId}`}>
+                  {userDetails.userName}
+                </Link>
+              </span>
+            </h3>
+          </div>
         ) : (
           <div className="link-to-user-page">
             <h3>
@@ -36,7 +71,21 @@ const AudioPlayer = ({ track, activeUser, setTrackDetails, destroyTrack }) => {
             </h3>
           </div>
         )}
-        <div className="player-track-data"></div>
+        <h4>Track info</h4>
+        <div className="player-track-data">
+          <ul className="player-track-genres">
+            <span className="label">Genres</span>
+            <TrackGenres track={track} />
+          </ul>
+          <ul className="player-track-metadata">
+            <li>Moods</li>
+            <TrackMetadata track={track} />
+          </ul>
+          <ul className="player-track-needs">
+            <li>Needs</li>
+            <TrackNeeds track={track} />
+          </ul>
+        </div>
       </div>
       <div className="react-player-wrapper">
         <ReactPlayer

@@ -8,19 +8,6 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
   const [trackGenres, setTrackGenres] = useState([])
   const [trackMetadata, setTrackMetadata] = useState([])
   const [trackNeeds, setTrackNeeds] = useState([])
-
-  useEffect(() => {
-    if (genres) {
-      setTrackGenres(new Array(genres.length).fill(false))
-    }
-    if (metadata) {
-      setTrackMetadata(new Array(metadata.length).fill(false))
-    }
-    if (needs) {
-      setTrackNeeds(new Array(needs.length).fill(false))
-    }
-  }, [genres, metadata, needs])
-
   const [formValues, setFormValues] = useState({
     trackName: '',
     trackDescription: '',
@@ -33,6 +20,18 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
   })
   const [createReady, setCreateReady] = useState(false)
   let navigate = useNavigate()
+
+  useEffect(() => {
+    if (genres) {
+      setTrackGenres(new Array(genres.length).fill(false))
+    }
+    if (metadata) {
+      setTrackMetadata(new Array(metadata.length).fill(false))
+    }
+    if (needs) {
+      setTrackNeeds(new Array(needs.length).fill(false))
+    }
+  }, [genres, metadata, needs])
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })

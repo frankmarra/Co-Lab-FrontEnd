@@ -81,6 +81,8 @@ const SearchPage = ({
       `https://colabdb.herokuapp.com/api/tracks/search/data?${searchQuery}`
     )
     setSearchResults(response.data)
+    console.log('response: ', response.data)
+    console.log('search results: ', searchResults)
   }
 
   const handleTextChange = (e) => {
@@ -166,7 +168,7 @@ const SearchPage = ({
           </button>
         </form>
         <h2>Search Results</h2>
-        {searchResults.length > 0 ? (
+        {searchResults != [] && searchResults.length > 0 ? (
           <div className="search-results">
             <UserAudioPlayer
               tracks={searchResults}

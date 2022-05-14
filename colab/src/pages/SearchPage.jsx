@@ -162,7 +162,7 @@ const SearchPage = ({
             />
           </div>
           <button className="text-search-submit" type="Submit">
-            <i className="fa-solid fa-compact-disc" title="search"></i>
+            <i className="fa-solid fa-compact-disc fa-spin" title="search"></i>
           </button>
         </form>
         <h2>Search Results</h2>

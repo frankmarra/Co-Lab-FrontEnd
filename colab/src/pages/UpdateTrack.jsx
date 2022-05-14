@@ -10,7 +10,8 @@ const UpdateTrack = ({
   activeUser,
   authenticated,
   trackDetails,
-  setTrackDetails
+  setTrackDetails,
+  userDetails
 }) => {
   const [trackGenres, setTrackGenres] = useState([])
   const [trackMetadata, setTrackMetadata] = useState([])
@@ -29,7 +30,7 @@ const UpdateTrack = ({
     removeMetadata: [],
     userId: activeUser.id
   })
-
+  const [updatedTrack, setUpdatedTrack] = useState({})
   useEffect(() => {
     const getTrackDetails = async () => {
       const response = await axios.get(
@@ -128,6 +129,16 @@ const UpdateTrack = ({
       removeGenres: removeGenreChoices,
       removeMetadata: removeMetadataChoices
     })
+    setUpdatedTrack({
+      trackName: formValues.trackName,
+      trackDescription: formValues.trackDescription,
+      trackAudio: formValues.trackAudio,
+      trackArt: formValues.trackArt,
+      needs: addNeedsChoices,
+      genres: addGenreChoices,
+      metadata: addMetadataChoices,
+      userId: activeUser.id
+    })
     setUpdateReady(true)
   }
 
@@ -136,6 +147,12 @@ const UpdateTrack = ({
       <UpdateTrackComp
         formValues={formValues}
         setUpdateReady={setUpdateReady}
+        genres={genres}
+        metadata={metadata}
+        needs={needs}
+        userDetails={userDetails}
+        activeUser={activeUser}
+        track={updatedTrack}
       />
     ) : (
       <div className="update-track-wrapper">
@@ -244,11 +261,13 @@ const UpdateTrack = ({
                 ))}
               </ul>
             </div>
-            <button type="Submit">Submit</button>
+            <div className="form-buttons">
+              <button type="Submit">Submit</button>
+              <button onClick={() => navigate(`/users/${activeUser.id}`)}>
+                Cancel
+              </button>
+            </div>
           </form>
-          <button onClick={() => navigate(`/users/${activeUser.id}`)}>
-            Cancel
-          </button>
         </div>
       </div>
     )

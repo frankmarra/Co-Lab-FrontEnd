@@ -3,7 +3,14 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AddTrackComp from '../components/AddTrackComp'
 
-const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
+const AddTrack = ({
+  genres,
+  metadata,
+  needs,
+  activeUser,
+  authenticated,
+  userDetails
+}) => {
   //See ReadMe for site that helped with setting default state logic:
   const [trackGenres, setTrackGenres] = useState([])
   const [trackMetadata, setTrackMetadata] = useState([])
@@ -92,7 +99,15 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
 
   return genres && metadata && needs ? (
     createReady ? (
-      <AddTrackComp formValues={formValues} setCreateReady={setCreateReady} />
+      <AddTrackComp
+        formValues={formValues}
+        setCreateReady={setCreateReady}
+        genres={genres}
+        metadata={metadata}
+        needs={needs}
+        userDetails={userDetails}
+        activeUser={activeUser}
+      />
     ) : (
       <div className="add-track-wrapper">
         <div className="add-track-form-wrapper">
@@ -200,10 +215,12 @@ const AddTrack = ({ genres, metadata, needs, activeUser, authenticated }) => {
                 ))}
               </ul>
             </div>
-            <button type="Submit">Submit</button>
-            <button onClick={() => navigate(`/users/${activeUser.id}`)}>
-              Cancel
-            </button>
+            <div className="form-buttons">
+              <button type="Submit">Submit</button>
+              <button onClick={() => navigate(`/users/${activeUser.id}`)}>
+                Cancel
+              </button>
+            </div>
           </form>
         </div>
       </div>

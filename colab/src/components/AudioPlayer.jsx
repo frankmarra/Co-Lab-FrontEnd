@@ -7,26 +7,6 @@ import TrackNeeds from './TrackNeeds'
 const AudioPlayer = ({ track, activeUser, setTrackDetails, userDetails }) => {
   let navigate = useNavigate()
 
-  // const showGenres = () => {
-  //   if (track.genres == []) {
-  //     return <div className="player-track-genres">No Genres Picked</div>
-  //   } else if (typeof track.genres === 'object') {
-  //     return (
-  //       <ul className="player-track-genres">
-  //         <li>{track.genres.genreName}</li>
-  //       </ul>
-  //     )
-  //   } else {
-  //     return (
-  //       <ul className="player-track-genres">
-  //         {track.genres.map((genre) => (
-  //           <li>{genre.genreName}</li>
-  //         ))}
-  //       </ul>
-  //     )
-  //   }
-  // }
-
   return track ? (
     <div className="player-wrapper">
       <div className="player-track-title">

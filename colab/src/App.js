@@ -138,6 +138,7 @@ function App() {
               genres={genres}
               metadata={metadata}
               needs={needs}
+              userDetails={userDetails}
             />
           }
         />
@@ -152,6 +153,7 @@ function App() {
               needs={needs}
               trackDetails={trackDetails}
               setTrackDetails={setTrackDetails}
+              userDetails={userDetails}
             />
           }
         />

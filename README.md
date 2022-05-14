@@ -53,3 +53,15 @@
 #### [Sequelize](https://sequelize.org/docs/v6/)
 
 #### [Help with belongsToMany](https://sebhastian.com/sequelize-belongstomany/)
+
+#### [Cloudinary](https://cloudinary.com)
+
+#### [Soundcloud](https://soundcloud.com)
+
+#### [w3 schools](https://w3schools.com)
+
+#### [Font Awesome](https://fontawesome.com)
+
+#### [MixFont](https://mixfont.com)
+
+#### [Help with checkbox logic in react](https://www.freecodecamp.org/news/how-to-work-with-multiple-checkboxes-in-react/)

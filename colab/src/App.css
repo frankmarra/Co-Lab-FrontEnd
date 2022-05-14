@@ -52,7 +52,7 @@ a:visited {
   display: flex;
   
 }
-.nav-buttons li, .user-page-crud li {
+.nav-buttons li {
   
   border: 1px solid #3876F2;
   margin: 0 20px;
@@ -61,7 +61,7 @@ a:visited {
   transition: 0.3s;
 }
 
-.nav-buttons li:hover, .user-page-crud li:hover {
+.nav-buttons li:hover, .user-page-crud li:hover, .add-track-form button:hover, .update-track-form button:hover {
   box-shadow: 0 0 2px 2px #c27cdf;
 }
 
@@ -200,10 +200,13 @@ input {
 .text-search button {
   border: none;
   font-size: 2rem;
+  transition: .3s;
 }
-
+.text-search button:hover {
+  color:#1c4eb2;
+}
 .search-results {
-  width: 60%;
+  width: 70%;
   overflow-x: scroll;
   height: 68vh;
 }
@@ -311,8 +314,24 @@ input {
 }
 .genre-checkbox, .metadata-checkbox, .need-checkbox {
   display: flex;
-  /* justify-content: space-between; */
+  align-items: center;
 }
+
+.form-buttons {
+  display: flex;
+}
+
+.add-track-form button, .update-track-form button {
+  border: 1px solid #1c4eb2;
+  background-color: #B6CAF2;
+  color:#1c4eb2;
+  margin: 0 10px 2vh;
+  transition: 0.3s;
+}
+
+
+
+
 /* Audio Player */
 .player-wrapper {
   display: grid;

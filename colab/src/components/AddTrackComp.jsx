@@ -1,10 +1,19 @@
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
+import AudioPlayerPreview from './AudioPlayerPreview'
 
-const AddTrackComp = ({ formValues, setCreateReady }) => {
+const AddTrackComp = ({
+  formValues,
+  setCreateReady,
+  genres,
+  metadata,
+  needs,
+  userDetails,
+  activeUser
+}) => {
   let { userId } = useParams()
   let navigate = useNavigate()
-  const update = async () => {
+  const createTrack = async () => {
     await axios.post(
       `https://colabdb.herokuapp.com/api/tracks/${userId}`,
       formValues
@@ -14,35 +23,17 @@ const AddTrackComp = ({ formValues, setCreateReady }) => {
 
   return (
     <div className="add-track-confirm-wrapper">
-      <div className="add-track-confirm-info">
-        <h3>You are about to create a track with these settings.</h3>
-        <ul>
-          <li>Name: {formValues.trackName}</li>
-          <li>Audio link: {formValues.trackAudio}</li>
-          <li>Art link: {formValues.trackArt}</li>
-          <li>Description: {formValues.trackDescription}</li>
-          <li>
-            Genres:{' '}
-            {formValues.genres.map((genre) => {
-              return genre.genreId
-            })}
-          </li>
-          <li>
-            Metadata:{' '}
-            {formValues.metadata.map((data) => {
-              return data.metadataId
-            })}
-          </li>
-          <li>
-            Needs:{' '}
-            {formValues.needs.map((need) => {
-              return need.needId
-            })}
-          </li>
-        </ul>
-      </div>
+      <h2>You are about to create this track. Look good?</h2>
+      <AudioPlayerPreview
+        track={formValues}
+        activeUser={activeUser}
+        userDetails={userDetails}
+        genres={genres}
+        metadata={metadata}
+        needs={needs}
+      />
       <div className="add-track-confirm-buttons">
-        <button onClick={() => update()}>Create</button>
+        <button onClick={() => createTrack()}>Create</button>
         <button onClick={() => setCreateReady(false)}>Cancel</button>
       </div>
     </div>

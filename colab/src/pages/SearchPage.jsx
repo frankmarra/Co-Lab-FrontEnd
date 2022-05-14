@@ -95,7 +95,7 @@ const SearchPage = ({
     setSearchResults(response.data)
   }
 
-  return (
+  return genres && metadata && needs ? (
     <div className="search-page-wrapper">
       <form className="search-options" onSubmit={handleSubmit}>
         <div className="input-wrapper">
@@ -182,6 +182,8 @@ const SearchPage = ({
         )}
       </div>
     </div>
+  ) : (
+    <div>Loading...</div>
   )
 }
 

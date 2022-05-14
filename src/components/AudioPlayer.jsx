@@ -48,7 +48,7 @@ const AudioPlayer = ({
               Ask to colab:{' '}
               <span>
                 <a
-                  href={`mailto:${track.userTrack.userEmail}?subject=Lets%20Colab&body=Hello%20${track.userTrack.userName}%20Let's%20colab%20on%20${track.trackName}%20My%20Colab%20ID%20is%20${activeUser.id}`}
+                  href={`mailto:${userDetails.userEmail}?subject=Lets%20Colab&body=Hello%20${userDetails.userName}%20Let's%20colab%20on%20${track.trackName}%20My%20Colab%20ID%20is%20${activeUser.id}`}
                   target="_blank"
                   rel="noreferrer"
                 >

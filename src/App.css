@@ -177,29 +177,39 @@ input {
 /* Search Page */
 
 .search-page-wrapper{
-  display: grid;
-  grid-template-columns: 1fr 5fr;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 .search-options {
-
+  display: flex;
+}
+.search-genres, .search-metadata, .search-needs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color:#1c4eb2;
+  color:#f2f2f2;
+  border: 1px solid #c27cdf;
+  margin: 1vh 1vw;
+  box-shadow: 2px 2px 2px 0 rgba(194, 124, 223, 0.5);
 }
 .search-results-wrapper {
   display: flex;
   flex-flow: column;
   align-items: center;
+  width: 60%;
 }
 
 .text-search {
   display: flex;
-  justify-content: center;
-  margin: 5vh 0 0;
+  margin: 2vh 0 0;
 }
 
 .text-search-input input {
   padding: 8px 20px;
 
 }
-.text-search button {
+.text-search button, .search-options button {
   border: none;
   font-size: 2rem;
   transition: .3s;
@@ -207,10 +217,12 @@ input {
 .text-search button:hover {
   color:#1c4eb2;
 }
+.search-options button:hover {
+  color:#c27cdf;
+}
 .search-results {
-  width: 70%;
   overflow-x: scroll;
-  height: 68vh;
+  height: 45vh;
 }
 
 /* User Profile Active */
@@ -364,8 +376,8 @@ input {
   left: 0;
 }
 .player-track-pic-description img {
-  height: 20vh;
-  width: auto;
+  height: 18vh;
+  max-width: auto;
 }
 .play-track-update-details {
   display: flex;

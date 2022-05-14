@@ -100,60 +100,59 @@ const SearchPage = ({
 
   return genres && metadata && needs ? (
     <div className="search-page-wrapper">
+      <span className="label">Explore by</span>
       <form className="search-options" onSubmit={handleSubmit}>
-        <div className="input-wrapper">
-          <label htmlFor="trackGenres">Genres</label>
-          <ul>
-            {genres.map((genre, i) => (
-              <li className="genre-checkbox" key={i}>
-                {genre.genreName}
-                <input
-                  name={genre.genreName}
-                  type="checkbox"
-                  value={genre.genreName}
-                  checked={trackGenres[i]}
-                  onChange={() => handleGenreChange(i)}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="input-wrapper">
-          <label htmlFor="trackMetadata">Metadata</label>
-          <ul>
-            {metadata.map((data, i) => (
-              <li className="metadata-checkbox" key={i}>
-                {data.metadataName}
-                <input
-                  name={data.metadataName}
-                  type="checkbox"
-                  value={data.metadataName}
-                  checked={trackMetadata[i]}
-                  onChange={() => handleMetadataChange(i)}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="input-wrapper">
-          <label htmlFor="trackNeeds">Needs</label>
-          <ul>
-            {needs.map((need, i) => (
-              <li className="need-checkbox" key={i}>
-                {need.needName}
-                <input
-                  name={need.metadataName}
-                  type="checkbox"
-                  value={need.metadataName}
-                  checked={trackNeeds[i]}
-                  onChange={() => handleNeedChange(i)}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-        <button type="Submit">Search</button>
+        <ul className="input-wrapper search-genres">
+          <span className="label">Genres</span>
+          {genres.map((genre, i) => (
+            <li className="genre-checkbox" key={i}>
+              <input
+                name={genre.genreName}
+                type="checkbox"
+                value={genre.genreName}
+                checked={trackGenres[i]}
+                onChange={() => handleGenreChange(i)}
+              />
+              <label htmlFor={genre.genreName}>{genre.genreName}</label>
+            </li>
+          ))}
+        </ul>
+        <ul className="input-wrapper search-metadata">
+          <span className="label">Moods</span>
+          {metadata.map((data, i) => (
+            <li className="metadata-checkbox" key={i}>
+              <input
+                name={data.metadataName}
+                type="checkbox"
+                value={data.metadataName}
+                checked={trackMetadata[i]}
+                onChange={() => handleMetadataChange(i)}
+              />
+              <label htmlFor={data.metadataName}>{data.metadataName}</label>
+            </li>
+          ))}
+        </ul>
+        <ul className="input-wrapper search-needs">
+          <span className="label">Needs</span>
+          {needs.map((need, i) => (
+            <li className="need-checkbox" key={i}>
+              <input
+                name={need.needName}
+                type="checkbox"
+                value={need.needName}
+                checked={trackNeeds[i]}
+                onChange={() => handleNeedChange(i)}
+              />
+              <label htmlFor={need.needName}>{need.needName}</label>
+            </li>
+          ))}
+        </ul>
+
+        <button type="Submit">
+          <i className="fa-solid fa-compact-disc fa-spin" title="search"></i>
+        </button>
       </form>
+
       <div className="search-results-wrapper">
         <form className="text-search" onSubmit={handleTextSubmit}>
           <div className="input-wrapper text-search-input">
@@ -162,6 +161,7 @@ const SearchPage = ({
               name="textSearch"
               type="text"
               value={textSearch}
+              placeholder="search by track name"
             />
           </div>
           <button className="text-search-submit" type="Submit">

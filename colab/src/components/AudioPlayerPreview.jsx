@@ -11,7 +11,6 @@ const AudioPlayerPreview = ({ track, genres, metadata, needs }) => {
         <p>{track.trackDescription}</p>
       </div>
       <div>
-        <h4>Track info</h4>
         <div className="player-track-data">
           <ul className="player-track-genres">
             <span className="label">Genres</span>
@@ -40,7 +39,7 @@ const AudioPlayerPreview = ({ track, genres, metadata, needs }) => {
             )}
           </ul>
           <ul className="player-track-metadata">
-            <li>Moods</li>
+            <span className="label">Moods</span>
             {track.metadata ? (
               !Array.isArray(track.metadata) ? (
                 metadata.map((data) =>
@@ -66,7 +65,7 @@ const AudioPlayerPreview = ({ track, genres, metadata, needs }) => {
             )}
           </ul>
           <ul className="player-track-needs">
-            <li>Needs</li>
+            <span className="label">Needs</span>
             {track.needs ? (
               !Array.isArray(track.needs) ? (
                 needs.map((need) =>

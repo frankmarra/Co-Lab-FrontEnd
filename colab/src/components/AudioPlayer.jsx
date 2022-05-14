@@ -51,18 +51,17 @@ const AudioPlayer = ({ track, activeUser, setTrackDetails, userDetails }) => {
             </h3>
           </div>
         )}
-        <h4>Track info</h4>
         <div className="player-track-data">
           <ul className="player-track-genres">
             <span className="label">Genres</span>
             <TrackGenres track={track} />
           </ul>
           <ul className="player-track-metadata">
-            <li>Moods</li>
+            <span className="label">Moods</span>
             <TrackMetadata track={track} />
           </ul>
           <ul className="player-track-needs">
-            <li>Needs</li>
+            <span className="label">Needs</span>
             <TrackNeeds track={track} />
           </ul>
         </div>

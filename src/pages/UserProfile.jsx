@@ -47,6 +47,7 @@ const UserProfile = ({
           activeUser={activeUser}
           setTrackDetails={setTrackDetails}
           userDetails={userDetails}
+          authenticated={authenticated}
         />
       </div>
       <div className="user-page-crud">
@@ -76,6 +77,7 @@ const UserProfile = ({
           activeUser={activeUser}
           setTrackDetails={setTrackDetails}
           userDetails={userDetails}
+          authenticated={authenticated}
         />
       </div>
     </div>

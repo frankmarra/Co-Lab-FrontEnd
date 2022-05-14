@@ -367,6 +367,20 @@ input {
   height: 20vh;
   width: auto;
 }
+.play-track-update-details {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.link-to-user-page {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.link-to-user-page h3 {
+  margin: 5px 0;
+}
 
 .update-track-link {
   grid-column: 2 /3 ;

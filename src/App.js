@@ -186,6 +186,7 @@ function App() {
               needs={needs}
               setTrackDetails={setTrackDetails}
               activeUser={activeUser}
+              authenticated={authenticated}
             />
           }
         />

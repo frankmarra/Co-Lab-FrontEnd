@@ -175,7 +175,7 @@ const SearchPage = ({
               tracks={searchResults}
               activeUser={activeUser}
               setTrackDetails={setTrackDetails}
-              destroyTrack={destroyTrack}
+              authenticated={authenticated}
             />
           </div>
         ) : (

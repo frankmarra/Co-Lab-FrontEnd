@@ -4,7 +4,8 @@ const UserAudioPlayer = ({
   tracks,
   activeUser,
   setTrackDetails,
-  userDetails
+  userDetails,
+  authenticated
 }) => {
   return (
     tracks && (
@@ -16,6 +17,7 @@ const UserAudioPlayer = ({
             activeUser={activeUser}
             setTrackDetails={setTrackDetails}
             userDetails={userDetails}
+            authenticated={authenticated}
           />
         ))}
       </div>

@@ -5,13 +5,13 @@ const RandomUserCard = ({ randomUser }) => {
     randomUser && (
       <div className="random-user-wrapper">
         <div className="random-user-banner">
-          <img src="" alt={randomUser.userName} />
+          <img src={randomUser.userBannerPic} alt={randomUser.userName} />
           <div className="random-user-pic-and-name">
             <img src={randomUser.userPic} alt={randomUser.userName} />
-            {randomUser.userName}
-          </div>
-          <div className="random-user-song-name">
-            {randomUser.Tracks[0].trackName}
+            <div className="random-user-name">
+              {randomUser.userName}
+              <div>{randomUser.Tracks[0].trackName}</div>
+            </div>
           </div>
         </div>
         <div className="react-player-wrapper">

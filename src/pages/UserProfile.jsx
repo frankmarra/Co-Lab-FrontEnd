@@ -51,7 +51,6 @@ const UserProfile = ({
         />
       </div>
       <div className="user-page-crud">
-        Crud
         <ul>
           <Link className="add-track-link" to={`/users/${userId}/addtrack`}>
             <li>Add Track</li>

@@ -79,6 +79,10 @@ a:visited {
   display: flex;
   flex-flow: column;
 }
+
+.home-wrapper h4 {
+  text-align: center;
+}
 .home-top-image-carousel {
   margin: 2%;
   height: 40vh;
@@ -134,15 +138,32 @@ a:visited {
 
 .random-users {
   display: flex;
+  justify-content: space-around;
 }
 
 .random-user-wrapper {
   display: flex;
   flex-flow: column;
+  border: 1px solid #1c4eb2;
+  background-color: #B6CAF2;
+  justify-content: space-between;
 }
 
+.random-user-banner img {
+  width: 15vw;
+  height: auto;
+}
 
+.random-user-pic-and-name {
+  display: flex;
+  padding: 0 1vw;
+}
 
+.random-user-name {
+  display: flex;
+  flex-flow: column;
+  padding: 0 1vw;
+}
 .random-user-pic-and-name img {
   height: 50px;
   width: 50px;
@@ -269,7 +290,7 @@ input {
 }
 .search-results {
   overflow-x: scroll;
-  height: 45vh;
+  height: 55vh;
 }
 
 /* User Profile Active */

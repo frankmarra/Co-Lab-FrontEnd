@@ -12,6 +12,7 @@ import AddTrack from './pages/AddTrack'
 import UpdateTrack from './pages/UpdateTrack'
 import UpdateUser from './pages/UpdateUser'
 import CreateColab from './pages/CreateColab'
+import DeleteTrack from './pages/DeleteTrack'
 import axios from 'axios'
 
 // const UserContext = createContext()
@@ -73,6 +74,10 @@ function App() {
     const user = await CheckSession()
     setActiveUser(user)
     toggleAuthenticated(true)
+  }
+
+  const destroyTrack = async (trackId) => {
+    await axios.delete(`https://colabdb.herokuapp.com/api/tracks/${trackId}`)
   }
 
   return (
@@ -151,6 +156,17 @@ function App() {
               activeUser={activeUser}
               authenticated={authenticated}
               userTracks={userTracks}
+            />
+          }
+        />
+        <Route
+          path="/users/:userId/deletetrack"
+          element={
+            <DeleteTrack
+              userTracks={userTracks}
+              activeUser={activeUser}
+              authenticated={authenticated}
+              destroyTrack={destroyTrack}
             />
           }
         />

@@ -25,11 +25,6 @@ const UserProfile = ({
     setUserDetails(response.data)
   }
 
-  const destroyTrack = async (trackId) => {
-    await axios.delete(`https://colabdb.herokuapp.com/api/tracks/${trackId}`)
-    getUserDetails()
-  }
-
   return activeUser &&
     authenticated &&
     userDetails &&
@@ -59,6 +54,9 @@ const UserProfile = ({
           <Link className="update-user-link" to={`/users/${userId}/update`}>
             <li>Update User</li>
           </Link>
+          <Link className="delete-user-link" to={`/users/${userId}/delete`}>
+            <li>Remove Track</li>
+          </Link>
         </ul>
       </div>
     </div>
@@ -86,10 +84,3 @@ const UserProfile = ({
 }
 
 export default UserProfile
-
-// <Link
-//             className="create-colab-link"
-//             to={`/users/${userId}/createcolab`}
-//           >
-//             <li>Create Co-lab</li>
-//           </Link>

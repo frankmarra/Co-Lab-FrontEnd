@@ -77,11 +77,6 @@ function App() {
     toggleAuthenticated(true)
   }
 
-  const destroyTrack = async (trackId) => {
-    await axios.delete(`https://colabdb.herokuapp.com/api/tracks/${trackId}`)
-    navigate(`/users/${activeUser.id}`)
-  }
-
   return (
     <div className="App">
       <Nav
@@ -168,7 +163,9 @@ function App() {
               userDetails={userDetails}
               activeUser={activeUser}
               authenticated={authenticated}
-              destroyTrack={destroyTrack}
+              genres={genres}
+              metadata={metadata}
+              needs={needs}
             />
           }
         />

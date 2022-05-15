@@ -1,4 +1,5 @@
 import ReactPlayer from 'react-player'
+import { Link } from 'react-router-dom'
 
 const RandomUserCard = ({ randomUser }) => {
   return (
@@ -9,7 +10,7 @@ const RandomUserCard = ({ randomUser }) => {
           <div className="random-user-pic-and-name">
             <img src={randomUser.userPic} alt={randomUser.userName} />
             <div className="random-user-name">
-              {randomUser.userName}
+              <Link to={`/users/${randomUser.id}`}>{randomUser.userName}</Link>
               {randomUser.Tracks.length > 0 ? (
                 <div>{randomUser.Tracks[0].trackName}</div>
               ) : (

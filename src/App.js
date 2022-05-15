@@ -25,6 +25,7 @@ function App() {
   const [needs, setNeeds] = useState()
   const [userDetails, setUserDetails] = useState()
   const [userTracks, setUserTracks] = useState()
+  const [allTracks, setAllTracks] = useState()
   const [trackDetails, setTrackDetails] = useState()
   const [users, setUsers] = useState([])
   let navigate = useNavigate()
@@ -39,6 +40,13 @@ function App() {
         `https://colabdb.herokuapp.com/api/users`
       )
       setUsers(response.data)
+    }
+
+    const getTracks = async () => {
+      const response = await axios.get(
+        `https://colabdb.herokuapp.com/api/tracks`
+      )
+      setAllTracks(response.data)
     }
     const getGenres = async () => {
       const response = await axios.get(
@@ -63,6 +71,7 @@ function App() {
     getMetadata()
     getNeeds()
     getUsers()
+    getTracks()
   }, [])
 
   const handleLogOut = () => {
@@ -115,6 +124,7 @@ function App() {
               userTracks={userTracks}
               setUserTracks={setUserTracks}
               setTrackDetails={setTrackDetails}
+              allTracks={allTracks}
             />
           }
         />
@@ -152,7 +162,7 @@ function App() {
             <CreateColab
               activeUser={activeUser}
               authenticated={authenticated}
-              userTracks={userTracks}
+              userDetails={userDetails}
             />
           }
         />

@@ -2,12 +2,12 @@ import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useState } from 'react'
 
-const CreateColab = ({ activeUser, authenticated, userTracks }) => {
+const CreateColab = ({ activeUser, authenticated, userDetails }) => {
   let { userId } = useParams()
 
   // const [createColab, setCreateColab] = useState(false)
   const [formValues, setFormValues] = useState({
-    colabCreator: userId,
+    colabCreator: activeUser.id,
     colabAdd: '',
     colabTrack: 'Please select a track'
   })
@@ -31,39 +31,41 @@ const CreateColab = ({ activeUser, authenticated, userTracks }) => {
   }
 
   return (
-    <div className="add-collab-wrapper">
-      <div className="add-collab-form-wrapper">
-        <form className="add-collab-form" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <label htmlFor="colabTrack">
-              Select the track to make a co-lab for.
-            </label>
-            <select name="colabTrack" onChange={handleChange}>
-              <option value="" disabled selected hidden>
-                Select Track
-              </option>
-              {userTracks.map((track) => (
-                <option value={track.id}>{track.trackName}</option>
-              ))}
-            </select>
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="colabAdd">
-              Enter the co-lab code of the user you would like to collaborate
-              with.
-            </label>
-            <input
-              onChange={handleChange}
-              name="colabAdd"
-              type="number"
-              min="1"
-            />
-          </div>
-          <button type="Submit">Submit</button>
-        </form>
-        <button onClick={() => navigate(`/users/${userId}`)}>Cancel</button>
+    userDetails && (
+      <div className="add-collab-wrapper">
+        <div className="add-collab-form-wrapper">
+          <form className="add-collab-form" onSubmit={handleSubmit}>
+            <div className="input-wrapper">
+              <label htmlFor="colabTrack">
+                Select the track to make a co-lab for.
+              </label>
+              <select name="colabTrack" onChange={handleChange}>
+                <option value="" disabled selected hidden>
+                  Select Track
+                </option>
+                {userDetails.Tracks.map((track) => (
+                  <option value={track.id}>{track.trackName}</option>
+                ))}
+              </select>
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="colabAdd">
+                Enter the co-lab code of the user you would like to collaborate
+                with.
+              </label>
+              <input
+                onChange={handleChange}
+                name="colabAdd"
+                type="number"
+                min="1"
+              />
+            </div>
+            <button type="Submit">Submit</button>
+          </form>
+          <button onClick={() => navigate(`/users/${userId}`)}>Cancel</button>
+        </div>
       </div>
-    </div>
+    )
   )
 }
 

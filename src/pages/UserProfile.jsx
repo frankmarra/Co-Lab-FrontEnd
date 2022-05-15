@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 import UserAudioPlayer from '../components/UserAudioPlayer'
+import ViewCollabs from '../components/ViewCollabs'
 
 const UserProfile = ({
   activeUser,
@@ -10,9 +11,12 @@ const UserProfile = ({
   userDetails,
   userTracks,
   setUserTracks,
-  setTrackDetails
+  setTrackDetails,
+  allTracks
 }) => {
   let { userId } = useParams()
+
+  const [viewColabs, setViewColabs] = useState(false)
 
   useEffect(() => {
     getUserDetails()
@@ -24,11 +28,6 @@ const UserProfile = ({
     )
     setUserDetails(response.data)
   }
-
-  // let spotPlay = new DOMParser().parseFromString(
-  //   userDetails.userSpotPlay,
-  //   'text/html'
-  // )
 
   return activeUser &&
     authenticated &&
@@ -42,17 +41,26 @@ const UserProfile = ({
           src={userDetails.userPic}
           alt={userDetails.userName}
         />
-        <p>{userDetails.userAbout}</p>
-        <div className="user-spot-playlist"></div>
+        <h4>You have been a part of {userDetails.userCollabCount} colabs</h4>
       </div>
       <div className="user-page-content">
-        <UserAudioPlayer
-          tracks={userDetails.Tracks}
-          activeUser={activeUser}
-          setTrackDetails={setTrackDetails}
-          userDetails={userDetails}
-          authenticated={authenticated}
-        />
+        {viewColabs ? (
+          <ViewCollabs
+            userDetails={userDetails}
+            allTracks={allTracks}
+            activeUser={activeUser}
+            setTrackDetails={setTrackDetails}
+            authenticated={authenticated}
+          />
+        ) : (
+          <UserAudioPlayer
+            tracks={userDetails.Tracks}
+            activeUser={activeUser}
+            setTrackDetails={setTrackDetails}
+            userDetails={userDetails}
+            authenticated={authenticated}
+          />
+        )}
       </div>
       <div className="user-page-crud">
         <ul>
@@ -63,6 +71,23 @@ const UserProfile = ({
           <Link className="update-user-link" to={`/users/${userId}/update`}>
             <li>Update User</li>
           </Link>
+          <Link
+            className="create-colab-user-link"
+            to={`/users/${userId}/createcolab`}
+          >
+            <li>Create Colab</li>
+          </Link>
+          {userDetails.collabs.length > 0 ? (
+            viewColabs ? (
+              <button onClick={() => setViewColabs(false)}>
+                <li>View Tracks</li>
+              </button>
+            ) : (
+              <button onClick={() => setViewColabs(true)}>View Colabs</button>
+            )
+          ) : (
+            <div></div>
+          )}
           {userDetails.Tracks.length > 0 ? (
             <Link
               className="delete-user-link"
@@ -104,6 +129,10 @@ const UserProfile = ({
               about{' '}
               <span className="heading-alt-font">{userDetails.userName}</span>
             </div>
+            <h4>
+              {userDetails.userName} has been a part of{' '}
+              {userDetails.userCollabCount} colabs
+            </h4>
             <p>{userDetails.userAbout}</p>
           </div>
         </div>

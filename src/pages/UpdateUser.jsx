@@ -42,75 +42,83 @@ const UpdateUser = ({ activeUser, authenticated, userDetails }) => {
   }
 
   return userDetails ? (
-    <div>
-      <div className="update-user-wrapper">
-        <div className="update-user-form-wrapper">
-          <h2>Update {userDetails.userName}</h2>
-          <form className="user-update-form" onSubmit={handleSubmit}>
-            <div className="input-wrapper">
-              <label htmlFor="userName">User Name:</label>
-              <input
-                onChange={handleChange}
-                name="userName"
-                type="text"
-                value={formValues.userName}
-                required
-              />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="userEmail">User Email:</label>
-              <input
-                onChange={handleChange}
-                name="userEmail"
-                type="email"
-                value={formValues.userEmail}
-                required
-              />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="userPic">User Picture Link:</label>
-              <input
-                onChange={handleChange}
-                name="userPic"
-                type="text"
-                value={formValues.userPic}
-              />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="userBannerPic">User Banner Picture Link:</label>
-              <input
-                onChange={handleChange}
-                name="userBannerPic"
-                type="text"
-                value={formValues.userBannerPic}
-              />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="userSpotPlay">User Spotify Playlist:</label>
-              <input
-                onChange={handleChange}
-                name="userSpotPlay"
-                type="text"
-                value={formValues.userSpotPlay}
-              />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="userAbout">User About:</label>
-              <textarea
-                onChange={handleChange}
-                name="userAbout"
-                value={formValues.userAbout}
-              >
-                This will be displayed on your profile to other users. Let them
-                know a little about ya'self.
-              </textarea>
-            </div>
+    <div className="update-user-wrapper">
+      <div className="update-user-form-wrapper">
+        <div className="heading-font">update</div>
+        <div className="heading-alt-font">{activeUser.userName}</div>
+        <form
+          className="update-user-form"
+          id="update-user"
+          onSubmit={handleSubmit}
+        >
+          <div className="input-wrapper">
+            <label htmlFor="userName">User Name:</label>
+            <input
+              onChange={handleChange}
+              name="userName"
+              type="text"
+              value={formValues.userName}
+              required
+            />
+          </div>
+          <div className="input-wrapper">
+            <label htmlFor="userEmail">User Email:</label>
+            <input
+              onChange={handleChange}
+              name="userEmail"
+              type="email"
+              value={formValues.userEmail}
+              required
+            />
+          </div>
+          <div className="input-wrapper">
+            <label htmlFor="userPic">User Picture Link:</label>
+            <input
+              onChange={handleChange}
+              name="userPic"
+              type="text"
+              value={formValues.userPic}
+            />
+          </div>
+          <div className="input-wrapper">
+            <label htmlFor="userBannerPic">User Banner Picture Link:</label>
+            <input
+              onChange={handleChange}
+              name="userBannerPic"
+              type="text"
+              value={formValues.userBannerPic}
+            />
+          </div>
+          <div className="input-wrapper">
+            <label htmlFor="userSpotPlay">User Spotify Playlist:</label>
+            <input
+              onChange={handleChange}
+              name="userSpotPlay"
+              type="text"
+              value={formValues.userSpotPlay}
+            />
+          </div>
+          <div className="input-wrapper">
+            <label htmlFor="userAbout">User About:</label>
+            <textarea
+              onChange={handleChange}
+              name="userAbout"
+              value={formValues.userAbout}
+              form="update-user"
+              rows="4"
+              cols="50"
+            >
+              This will be displayed on your profile to other users. Let them
+              know a little about ya'self.
+            </textarea>
+          </div>
+          <div className="form-buttons">
             <button type="Submit">Submit</button>
-          </form>
-          <button onClick={() => navigate(`/users/${activeUser.id}`)}>
-            Cancel
-          </button>
-        </div>
+            <button onClick={() => navigate(`/users/${activeUser.id}`)}>
+              Cancel
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   ) : (

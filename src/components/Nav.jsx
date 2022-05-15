@@ -4,44 +4,50 @@ const Nav = ({ authenticated, activeUser, handleLogOut }) => {
   let authenticatedOptions
   if (activeUser) {
     authenticatedOptions = (
-      <ul className="nav-buttons">
-        <li>
-          <Link to={`/users/${activeUser.id}`}>{activeUser.userName}</Link>
-        </li>
-        <li>
-          <Link to="/" className="logout-button" onClick={handleLogOut}>
-            Log Out
+      <ul className="nav-search-title">
+        <Link to="/search">
+          <li>
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </li>
+        </Link>
+        <Link className="nav-title" to="/">
+          <li>Co-lab</li>
+        </Link>
+        <div className="nav-buttons">
+          <Link to={`/users/${activeUser.id}`}>
+            <li>{activeUser.userName}</li>
           </Link>
-        </li>
+          <Link to="/" className="logout-button" onClick={handleLogOut}>
+            <li>Log Out</li>
+          </Link>
+        </div>
       </ul>
     )
   }
 
   const publicOptions = (
-    <ul className="nav-buttons">
-      <li>
-        <Link to="/register">Sign-Up</Link>
-      </li>
-      <li>
-        <Link to="/signin">Log-In</Link>
-      </li>
+    <ul className="nav-search-title">
+      <Link to="/search">
+        <li>
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </li>
+      </Link>
+      <Link className="nav-title" to="/">
+        <li>Co-lab</li>
+      </Link>
+      <div className="nav-buttons">
+        <Link to="/register">
+          <li>Sign-Up</li>
+        </Link>
+        <Link to="/signin">
+          <li>Log-In</li>
+        </Link>
+      </div>
     </ul>
   )
   return (
     <header>
       <nav>
-        <ul className="nav-search-title">
-          <li>
-            <Link to="/search">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </Link>
-          </li>
-          <li>
-            <Link className="nav-title" to="/">
-              Co-lab
-            </Link>
-          </li>
-        </ul>
         {authenticated && activeUser ? authenticatedOptions : publicOptions}
       </nav>
     </header>

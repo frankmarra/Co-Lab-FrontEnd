@@ -1,32 +1,43 @@
 import { useState, useEffect } from 'react'
-import AudioPlayer from '../components/AudioPlayer'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import RandomUserCard from '../components/RandomUserCard'
 
-const Home = ({ tracks, tracksLength }) => {
-  const [randomTrackNumber, setRandomTrackNumber] = useState()
-
-  useEffect(() => {
-    setRandomTrackNumber(Math.floor(Math.random() * tracksLength))
-  }, [tracksLength])
-
+const Home = ({ users }) => {
   return (
-    tracks && (
-      <div className="home-wrapper">
-        <div className="home-top-image-carousel">
-          <div className="home-image">
-            <img src="https://images.pexels.com/photos/4988131/pexels-photo-4988131.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-            <div className="about-colab">words</div>
+    <div className="home-wrapper">
+      <div className="home-top-image-carousel">
+        <div className="home-image">
+          <img src="https://res.cloudinary.com/silverbeard/image/upload/v1652576895/colab_banner_new_n2giih.png" />
+          <div className="about-colab">
+            <h2 className="about-colab-info">
+              Upload Tracks. Explore New Music. Co-laborate.{' '}
+            </h2>
+            <Link to={'/register'}>
+              <h2 className="about-colab-words">Get Started</h2>
+            </Link>
           </div>
         </div>
-
-        <Link className="home-search" to="/search">
-          Search
-        </Link>
-
-        <div className="random-users-wrapper"></div>
       </div>
-    )
+      <Link className="home-search" to="/search">
+        <div className="home-search-div">Explore</div>
+      </Link>
+      <h4>Or check out a random user</h4>
+      {users ? (
+        <div className="random-users">
+          <RandomUserCard
+            randomUser={users[Math.floor(Math.random() * users.length)]}
+          />
+          <RandomUserCard
+            randomUser={users[Math.floor(Math.random() * users.length)]}
+          />
+          <RandomUserCard
+            randomUser={users[Math.floor(Math.random() * users.length)]}
+          />
+        </div>
+      ) : (
+        <div>Loading...</div>
+      )}
+    </div>
   )
 }
 

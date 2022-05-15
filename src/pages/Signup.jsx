@@ -28,7 +28,7 @@ const Signup = ({ setActiveUser }) => {
       password: '',
       confirmPassword: ''
     })
-    navigate(`/users/${newUser.id}`)
+    navigate(`/signin`)
   }
 
   return (
@@ -92,8 +92,12 @@ const Signup = ({ setActiveUser }) => {
       </div>
       <div className="signup-about-wrapper">
         <div className="signup-about">
-          <h2>Co-lab</h2>
-          <h4>Words about Co-lab</h4>
+          <h4>Getting started is easy!</h4>
+          <h5>After creating an account, you will be asked to sign in.</h5>
+          <h5>
+            Then start uploading your tracks or searching through the Co-lab
+            library for tracks to colab on!
+          </h5>
         </div>
       </div>
     </div>

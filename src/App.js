@@ -22,26 +22,22 @@ function App() {
   const [genres, setGenres] = useState()
   const [metadata, setMetadata] = useState()
   const [needs, setNeeds] = useState()
-  const [tracks, setTracks] = useState()
-  const [tracksLength, setTracksLength] = useState()
   const [userDetails, setUserDetails] = useState()
   const [userTracks, setUserTracks] = useState()
   const [trackDetails, setTrackDetails] = useState()
+  const [users, setUsers] = useState([])
 
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
       checkToken()
     }
-
-    const getTracks = async () => {
+    const getUsers = async () => {
       const response = await axios.get(
-        `https://colabdb.herokuapp.com/api/tracks`
+        `https://colabdb.herokuapp.com/api/users`
       )
-      setTracks(response.data)
-      setTracksLength(response.data.length)
+      setUsers(response.data)
     }
-
     const getGenres = async () => {
       const response = await axios.get(
         `https://colabdb.herokuapp.com/api/genres`
@@ -64,7 +60,7 @@ function App() {
     getGenres()
     getMetadata()
     getNeeds()
-    getTracks()
+    getUsers()
   }, [])
 
   const handleLogOut = () => {
@@ -87,16 +83,7 @@ function App() {
         handleLogOut={handleLogOut}
       />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              tracks={tracks}
-              tracksLength={tracksLength}
-              activeUser={activeUser}
-            />
-          }
-        />
+        <Route path="/" element={<Home users={users} />} />
         <Route
           path="/register"
           element={

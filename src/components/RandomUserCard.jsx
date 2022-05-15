@@ -10,7 +10,7 @@ const RandomUserCard = ({ randomUser }) => {
             <img src={randomUser.userPic} alt={randomUser.userName} />
             <div className="random-user-name">
               {randomUser.userName}
-              {randomUser.Tracks > 0 ? (
+              {randomUser.Tracks.length > 0 ? (
                 <div>{randomUser.Tracks[0].trackName}</div>
               ) : (
                 <div></div>
@@ -18,7 +18,7 @@ const RandomUserCard = ({ randomUser }) => {
             </div>
           </div>
         </div>
-        {randomUser.Tracks > 0 ? (
+        {randomUser.Tracks.length > 0 ? (
           <div className="react-player-wrapper">
             <ReactPlayer
               url={randomUser.Tracks[0].trackAudio}

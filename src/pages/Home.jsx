@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import RandomUserCard from '../components/RandomUserCard'
 
-const Home = ({ users }) => {
+const Home = ({ users, colabs }) => {
   return (
     <div className="home-wrapper">
       <div className="home-top-image-carousel">
@@ -19,6 +18,10 @@ const Home = ({ users }) => {
         </div>
       </div>
       <Link className="home-search" to="/search">
+        <div className="heading-alt-font">
+          {colabs.length} Colabs{' '}
+          <span className="heading-font">and counting!</span>
+        </div>
         <div className="home-search-div">Explore</div>
       </Link>
       <h4>Or check out a random user</h4>

@@ -20,10 +20,23 @@ const DeleteTrackComp = ({
   }
 
   return (
-    <div className="delete-track-confirm-wrapper">
-      <h2>You are about to delete this track.</h2>
-      <AudioPlayerPreview track={track} />
-    </div>
+    track && (
+      <div className="delete-track-confirm-wrapper">
+        <h2>You are about to delete this track.</h2>
+        <AudioPlayerPreview
+          track={track}
+          activeUser={activeUser}
+          userDetails={userDetails}
+          genres={genres}
+          metadata={metadata}
+          needs={needs}
+        />
+        <div className="delete-track-confirm-buttons">
+          <button onClick={() => destroyTrack(track.id)}>Delete</button>
+          <button onClick={() => setDeleteReady(false)}>Cancel</button>
+        </div>
+      </div>
+    )
   )
 }
 

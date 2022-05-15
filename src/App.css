@@ -195,7 +195,7 @@ a:visited {
   border-top-right-radius: 3px;
 }
 
-.signup-form, .add-track-form, .update-track-form, .update-user-form, .delete-track-form {
+.signup-form, .add-track-form, .update-track-form, .update-user-form, .delete-track-form, .add-collab-form {
   display: flex;
   flex-flow: column;
   background-color: #B6CAF2;
@@ -338,6 +338,11 @@ input {
   text-align: center;
 }
 
+#view-user-colabs, #view-user-tracks {
+  border: none;
+  color: #1c4eb2;
+}
+
 /* visiting user page */
 
 .visit-user-page {
@@ -392,17 +397,16 @@ input {
   align-items: center;
 }
 
-/* Add Track + Update Track*/
+/* Add Track + Update Track + Delete Track + Create Colab */
 
-.add-track-wrapper, .update-track-wrapper, .update-user-wrapper, .delete-track-wrapper {
+.add-track-wrapper, .update-track-wrapper, .update-user-wrapper, .delete-track-wrapper, .add-collab-wrapper {
   display: flex;
   flex-flow: column;
   align-items: center;
 }
 
 
-
-.add-track-form-wrapper, .update-track-form-wrapper, .update-user-form-wrapper, .delete-track-form-wrapper {
+.add-track-form-wrapper, .update-track-form-wrapper, .update-user-form-wrapper, .delete-track-form-wrapper, .add-collab-form-wrapper {
   border: 1px solid rgb(44, 42, 42);
   text-align: center;
   border-radius: 3px;
@@ -458,7 +462,7 @@ input {
   display: flex;
 }
 
-.add-track-form button, .update-track-form button, .add-track-confirm-buttons button, .update-track-confirm-buttons button, .update-user-form button, .delete-track-form button{
+.add-track-form button, .update-track-form button, .add-track-confirm-buttons button, .update-track-confirm-buttons button, .update-user-form button, .delete-track-form button .add-collab-form button{
   border: 1px solid #1c4eb2;
   background-color: #B6CAF2;
   color:#1c4eb2;

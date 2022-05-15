@@ -34,7 +34,13 @@ const CreateColab = ({ activeUser, authenticated, userDetails }) => {
     userDetails && (
       <div className="add-collab-wrapper">
         <div className="add-collab-form-wrapper">
-          <form className="add-collab-form" onSubmit={handleSubmit}>
+          <div className="heading-font">add a</div>
+          <div className="heading-alt-font">Colab</div>
+          <form
+            className="add-collab-form"
+            id="add-collab"
+            onSubmit={handleSubmit}
+          >
             <div className="input-wrapper">
               <label htmlFor="colabTrack">
                 Select the track to make a co-lab for.
@@ -60,9 +66,13 @@ const CreateColab = ({ activeUser, authenticated, userDetails }) => {
                 min="1"
               />
             </div>
-            <button type="Submit">Submit</button>
+            <div className="form-buttons">
+              <button type="Submit">Submit</button>
+              <button onClick={() => navigate(`/users/${userId}`)}>
+                Cancel
+              </button>
+            </div>
           </form>
-          <button onClick={() => navigate(`/users/${userId}`)}>Cancel</button>
         </div>
       </div>
     )

@@ -44,7 +44,14 @@ const UserProfile = ({
         <h4>You have been a part of {userDetails.userCollabCount} colabs</h4>
       </div>
       <div className="user-page-content">
-        {viewColabs ? (
+        {userDetails.Tracks.length == 0 ? (
+          <div>
+            <h2>
+              You don't have any tracks. Add some by clicking the 'Add Tracks'
+              button{' '}
+            </h2>
+          </div>
+        ) : viewColabs ? (
           <ViewCollabs
             userDetails={userDetails}
             allTracks={allTracks}
@@ -79,11 +86,23 @@ const UserProfile = ({
           </Link>
           {userDetails.collabs.length > 0 ? (
             viewColabs ? (
-              <button onClick={() => setViewColabs(false)}>
-                <li>View Tracks</li>
-              </button>
+              <li>
+                <button
+                  id="view-user-tracks"
+                  onClick={() => setViewColabs(false)}
+                >
+                  View Tracks
+                </button>
+              </li>
             ) : (
-              <button onClick={() => setViewColabs(true)}>View Colabs</button>
+              <li>
+                <button
+                  id="view-user-colabs"
+                  onClick={() => setViewColabs(true)}
+                >
+                  View Colabs
+                </button>
+              </li>
             )
           ) : (
             <div></div>

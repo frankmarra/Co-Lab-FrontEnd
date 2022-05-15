@@ -12,6 +12,7 @@ const DeleteTrack = ({
 }) => {
   const [selectedTrack, setSelectedTrack] = useState()
   const [deleteReady, setDeleteReady] = useState(false)
+  const [trackToDelete, setTrackToDelete] = useState()
 
   let navigate = useNavigate()
   const handleChange = (e) => {
@@ -20,11 +21,25 @@ const DeleteTrack = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    userDetails.Tracks.forEach((track) => {
+      if (track.id == selectedTrack) {
+        console.log(track)
+        setTrackToDelete(track)
+      }
+    })
     setDeleteReady(true)
   }
 
   return deleteReady ? (
-    <DeleteTrackComp track={selectedTrack} />
+    <DeleteTrackComp
+      track={trackToDelete}
+      genres={genres}
+      metadata={metadata}
+      needs={needs}
+      userDetails={userDetails}
+      activeUser={activeUser}
+      setDeleteReady={setDeleteReady}
+    />
   ) : (
     <div className="delete-track-wrapper">
       <div className="delete-track-form-wrapper">

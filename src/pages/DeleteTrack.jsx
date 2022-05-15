@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react'
 
 const DeleteTrack = ({
-  userTracks,
+  userDetails,
   activeUser,
   authenticated,
   destroyTrack
@@ -13,9 +13,10 @@ const DeleteTrack = ({
     setSelectedTrack(e.target.value)
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    destroyTrack(selectedTrack)
+  const handleSubmit = async () => {
+    window.confirm(`Are you sure you want to delete ${selectedTrack.trackName}`)
+      ? destroyTrack(selectedTrack)
+      : console.log('canceled')
   }
 
   return (
@@ -24,11 +25,13 @@ const DeleteTrack = ({
         <div className="input-wrapper">
           <label htmlFor="deleteTrack">Select the track to delete:</label>
           <select name="deleteTrack" onChange={handleChange}>
-            <option value="" disabled selected hidden>
+            <option value="select a track" disabled selected hidden>
               Select a track
             </option>
-            {userTracks.map((track) => (
-              <option value={track.id}>{track.trackName}</option>
+            {userDetails.Tracks.map((track) => (
+              <option key={track.id} value={track.id}>
+                {track.trackName}
+              </option>
             ))}
           </select>
         </div>

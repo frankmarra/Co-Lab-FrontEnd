@@ -54,7 +54,10 @@ const UserProfile = ({
           <Link className="update-user-link" to={`/users/${userId}/update`}>
             <li>Update User</li>
           </Link>
-          <Link className="delete-user-link" to={`/users/${userId}/delete`}>
+          <Link
+            className="delete-user-link"
+            to={`/users/${userId}/deletetrack`}
+          >
             <li>Remove Track</li>
           </Link>
         </ul>

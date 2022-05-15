@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { useNavigate, Route, Routes } from 'react-router-dom'
 import { CheckSession } from './services/Auth'
 import './App.css'
 import Nav from './components/Nav'
@@ -27,6 +27,7 @@ function App() {
   const [userTracks, setUserTracks] = useState()
   const [trackDetails, setTrackDetails] = useState()
   const [users, setUsers] = useState([])
+  let navigate = useNavigate()
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -78,6 +79,7 @@ function App() {
 
   const destroyTrack = async (trackId) => {
     await axios.delete(`https://colabdb.herokuapp.com/api/tracks/${trackId}`)
+    navigate(`/users/${activeUser.id}`)
   }
 
   return (
@@ -163,7 +165,7 @@ function App() {
           path="/users/:userId/deletetrack"
           element={
             <DeleteTrack
-              userTracks={userTracks}
+              userDetails={userDetails}
               activeUser={activeUser}
               authenticated={authenticated}
               destroyTrack={destroyTrack}

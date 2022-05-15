@@ -191,15 +191,3 @@ const AudioPlayer = ({
 }
 
 export default AudioPlayer
-
-// <button
-//                 onClick={() =>
-//                   window.confirm(
-//                     `Are you sure you want to delete ${track.trackName}?`
-//                   )
-//                     ? destroyTrack(track.id)
-//                     : console.log('canceled')
-//                 }
-//               >
-//                 Delete
-//               </button>

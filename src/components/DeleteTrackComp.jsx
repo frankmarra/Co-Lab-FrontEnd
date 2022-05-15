@@ -11,7 +11,6 @@ const DeleteTrackComp = ({
   activeUser,
   track
 }) => {
-  let { userId } = useParams()
   let navigate = useNavigate()
 
   const destroyTrack = async (trackId) => {

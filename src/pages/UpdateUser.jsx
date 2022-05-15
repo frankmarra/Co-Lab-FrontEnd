@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 const UpdateUser = ({ activeUser, authenticated, userDetails }) => {
   let navigate = useNavigate()
-  let { userId } = useParams()
 
   const [formValues, setFormValues] = useState({
     userName: '',
@@ -39,7 +38,7 @@ const UpdateUser = ({ activeUser, authenticated, userDetails }) => {
     navigate(`/users/${activeUser.id}`)
   }
 
-  return userDetails ? (
+  return userDetails && authenticated ? (
     <div className="update-user-wrapper">
       <div className="update-user-form-wrapper">
         <div className="heading-font">update</div>

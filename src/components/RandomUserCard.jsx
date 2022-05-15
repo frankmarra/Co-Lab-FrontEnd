@@ -13,7 +13,9 @@ const RandomUserCard = ({ randomUser }) => {
               <div className="random-user-name">
                 {randomUser.userName}
                 {randomUser.Tracks.length > 0 ? (
-                  <div>{randomUser.Tracks[0].trackName}</div>
+                  <div className="random-user-track-name">
+                    {randomUser.Tracks[0].trackName}
+                  </div>
                 ) : (
                   <div></div>
                 )}

@@ -30,7 +30,6 @@ const ViewCollabs = ({
       tracks={userColabs}
       activeUser={activeUser}
       setTrackDetails={setTrackDetails}
-      userDetails={userDetails}
       authenticated={authenticated}
     />
   )

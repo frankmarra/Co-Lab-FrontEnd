@@ -17,19 +17,19 @@ const Home = ({ users, colabs }) => {
           </div>
         </div>
       </div>
-      <Link className="home-search" to="/search">
+      <div className="home-search-div">
         <div className="heading-alt-font">
           {colabs.length} Colabs{' '}
           <span className="heading-font">and counting!</span>
         </div>
-        <div className="home-search-div">
+        <Link className="home-search" to="/search">
           Explore{' '}
           <span>
             <i class="fa-solid fa-angles-right"></i>
           </span>
-        </div>
-      </Link>
-      <h4>Or check out a random user</h4>
+        </Link>
+      </div>
+
       {users ? (
         <div className="random-users">
           <RandomUserCard

@@ -31,7 +31,7 @@ const AudioPlayer = ({
                 navigate(`/users/${activeUser.id}/updatetrack/${track.id}`)
               }}
             >
-              <i className="fa-solid fa-sliders"></i>
+              update <i className="fa-solid fa-sliders"></i>
             </button>
           </div>
         ) : userDetails ? (

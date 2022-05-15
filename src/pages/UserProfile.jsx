@@ -41,7 +41,7 @@ const UserProfile = ({
           src={userDetails.userPic}
           alt={userDetails.userName}
         />
-        <h4>You have been a part of {userDetails.userCollabCount} colabs</h4>
+        <h4>You have been a part of {userDetails.userCollabCount} Co-labs</h4>
       </div>
       <div className="user-page-content">
         {userDetails.Tracks.length == 0 ? (
@@ -82,7 +82,7 @@ const UserProfile = ({
             className="create-colab-user-link"
             to={`/users/${userId}/createcolab`}
           >
-            <li>Create Colab</li>
+            <li>Create Co-lab</li>
           </Link>
           {userDetails.collabs.length > 0 ? (
             viewColabs ? (
@@ -91,7 +91,7 @@ const UserProfile = ({
                   id="view-user-tracks"
                   onClick={() => setViewColabs(false)}
                 >
-                  View Tracks
+                  View Tracks{' '}
                 </button>
               </li>
             ) : (
@@ -100,7 +100,7 @@ const UserProfile = ({
                   id="view-user-colabs"
                   onClick={() => setViewColabs(true)}
                 >
-                  View Colabs
+                  View Co-labs
                 </button>
               </li>
             )
@@ -139,10 +139,6 @@ const UserProfile = ({
       </div>
       <div className="visit-user-page-content">
         <div className="visit-user-page-playlist-about-wrapper">
-          <div
-            className="user-spot-playlist"
-            dangerouslySetInnerHTML={{ __html: userDetails.userSpotPlay }}
-          ></div>
           <div className="visit-user-about">
             <div className="heading-font">
               about{' '}
@@ -150,10 +146,14 @@ const UserProfile = ({
             </div>
             <h4>
               {userDetails.userName} has been a part of{' '}
-              {userDetails.userCollabCount} colabs
+              {userDetails.userCollabCount} Co-labs
             </h4>
             <p>{userDetails.userAbout}</p>
           </div>
+          <div
+            className="user-spot-playlist"
+            dangerouslySetInnerHTML={{ __html: userDetails.userSpotPlay }}
+          ></div>
         </div>
         <div className="visit-user-tracks">
           <UserAudioPlayer

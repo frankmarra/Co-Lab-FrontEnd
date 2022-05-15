@@ -11,7 +11,6 @@ const AddTrack = ({
   authenticated,
   userDetails
 }) => {
-  //See ReadMe for site that helped with setting default state logic:
   const [trackGenres, setTrackGenres] = useState([])
   const [trackMetadata, setTrackMetadata] = useState([])
   const [trackNeeds, setTrackNeeds] = useState([])
@@ -28,6 +27,7 @@ const AddTrack = ({
   const [createReady, setCreateReady] = useState(false)
   let navigate = useNavigate()
 
+  //See ReadMe for site that helped with setting state logic:
   useEffect(() => {
     if (genres) {
       setTrackGenres(new Array(genres.length).fill(false))

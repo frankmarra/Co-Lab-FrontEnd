@@ -10,7 +10,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f2f2f2;
+  background-color: #e2e8f6;
   height: 100vh;
   width: 100vw;
   font-family: 'Jost', sans-serif;
@@ -24,6 +24,9 @@ nav {
   /* display: flex; */
   background-color: #B6CAF2;
   color: #1c4eb2;
+  /* position: fixed;
+  top: 0;
+  width: 100%; */
   /* justify-content: space-evenly; */
   /* align-items: center; */
   /* width: 100%; */
@@ -131,9 +134,20 @@ a:visited {
 
 .home-search {
   font-family: 'LimeLight', cursive;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   text-decoration: none;
   text-align: center;
+}
+
+.home-search-div {
+  border-top: 1px solid #1c4eb2;
+  margin: 1vh 10vw;
+  padding: 1vh 0;
+}
+
+.fa-angles-right {
+  font-size: 1.9rem;
+
 }
 
 .random-users {
@@ -224,6 +238,7 @@ a:visited {
   flex-flow: column;
   justify-content: center;
   text-align: center;
+  background-color: #f2f2f2;
 }
 
 .signup-about {
@@ -358,7 +373,7 @@ input {
 }
 
 .visit-user-banner-section {
-  height: 18vh;
+  height: 13vh;
   overflow: hidden;
   position: relative;
 }
@@ -373,17 +388,18 @@ input {
   top:0;
   left: 0;
   border-radius: 50px;
-  height: 100px;
-  width: 100px;
-  margin: 2.5vh 0 0 1vw;
+  height: 10vh;
+  width: 10vh;
+  margin: 1.5vh 0 0 1vw;
 }
 
 #visit-user-name {
   position: absolute;
-  top: 24%;
-  left: 10%;
+  top: 0;
+  left: 0;
   color:#c27cdf;
-  transform: translate(-24%, -10%);
+  margin: 4.4vh 0 0 8vw;
+  font-family: 'Jost', sans-serif;
 }
 
 .visit-user-page-content {
@@ -395,6 +411,23 @@ input {
   display: flex;
   flex-flow: column;
   align-items: center;
+}
+
+.user-spot-playlist {
+  width: 70%;
+  margin: 2vh 0;
+}
+
+.visit-user-about {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.visit-user-tracks {
+  width: 90%;
+  /* height: 76vh; */
+  overflow: hidden;
 }
 
 /* Add Track + Update Track + Delete Track + Create Colab */
@@ -511,10 +544,12 @@ input {
 .player-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 1px solid black;
+  border: 1px solid #1c4eb2;
+  background-color: #B6CAF2;
+  border-radius: 3px;
   margin: 10px 0;
   padding: 0 5% 0 ;
-  box-shadow: 0 2px 3px 0 rgba(47, 47, 47, 0.5);
+  box-shadow: 2px 2px 3px 0 rgba(200, 132, 229, .5);
   font-family: 'Jost', sans-serif;
 }
 

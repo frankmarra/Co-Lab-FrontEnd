@@ -8,7 +8,6 @@ const UpdateUser = ({ activeUser, authenticated, userDetails }) => {
 
   const [formValues, setFormValues] = useState({
     userName: '',
-    userEmail: '',
     userPic: '',
     userBannerPic: '',
     userAbout: '',
@@ -20,7 +19,6 @@ const UpdateUser = ({ activeUser, authenticated, userDetails }) => {
     setFormValues({
       ...formValues,
       userName: userDetails.userName,
-      userEmail: userDetails.userEmail,
       userPic: userDetails.userPic,
       userBannerPic: userDetails.userBannerPic,
       userAbout: userDetails.userAbout,
@@ -58,16 +56,6 @@ const UpdateUser = ({ activeUser, authenticated, userDetails }) => {
               name="userName"
               type="text"
               value={formValues.userName}
-              required
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="userEmail">User Email:</label>
-            <input
-              onChange={handleChange}
-              name="userEmail"
-              type="email"
-              value={formValues.userEmail}
               required
             />
           </div>

@@ -48,7 +48,7 @@ const AudioPlayer = ({
               Ask to colab:{' '}
               <span>
                 <a
-                  href={`mailto:${userDetails.userEmail}?subject=Lets%20Colab&body=Hello%20${userDetails.userName}%20Let's%20colab%20on%20${track.trackName}%20My%20Colab%20ID%20is%20${activeUser.id}`}
+                  href={`mailto:${userDetails.userEmail}?subject=Let's%20Co-lab&body=Hello%20${userDetails.userName},%0D%0AThis is ${activeUser.userName}.  I heard your track ${track.trackName} and would like to help you finish it.%20%20My ID%20is%20${activeUser.id}.`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -71,7 +71,7 @@ const AudioPlayer = ({
               Ask to colab:{' '}
               <span>
                 <a
-                  href={`mailto:${track.userTrack.userEmail}?subject=Lets%20Colab&body=Hello%20${track.userTrack.userName}%20Let's%20colab%20on%20${track.trackName}%20My%20Colab%20ID%20is%20${activeUser.id}`}
+                  href={`mailto:${track.userTrack.userEmail}?subject=Let's Co-lab&body=Hello ${track.userTrack.userName},%0D%0A This is ${activeUser.userName}.  I heard your track ${track.trackName} and would like to help you finish it.%20%20My%20Co-lab%20ID%20is%20${activeUser.id}.`}
                   target="_blank"
                   rel="noreferrer"
                 >

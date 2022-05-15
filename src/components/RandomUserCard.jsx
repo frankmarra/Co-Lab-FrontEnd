@@ -5,20 +5,22 @@ const RandomUserCard = ({ randomUser }) => {
   return (
     randomUser && (
       <div className="random-user-wrapper">
-        <div className="random-user-banner">
-          <img src={randomUser.userBannerPic} alt={randomUser.userName} />
-          <div className="random-user-pic-and-name">
-            <img src={randomUser.userPic} alt={randomUser.userName} />
-            <div className="random-user-name">
-              <Link to={`/users/${randomUser.id}`}>{randomUser.userName}</Link>
-              {randomUser.Tracks.length > 0 ? (
-                <div>{randomUser.Tracks[0].trackName}</div>
-              ) : (
-                <div></div>
-              )}
+        <Link to={`/users/${randomUser.id}`}>
+          <div className="random-user-banner">
+            <img src={randomUser.userBannerPic} alt={randomUser.userName} />
+            <div className="random-user-pic-and-name">
+              <img src={randomUser.userPic} alt={randomUser.userName} />
+              <div className="random-user-name">
+                {randomUser.userName}
+                {randomUser.Tracks.length > 0 ? (
+                  <div>{randomUser.Tracks[0].trackName}</div>
+                ) : (
+                  <div></div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
         {randomUser.Tracks.length > 0 ? (
           <div className="react-player-wrapper">
             <ReactPlayer

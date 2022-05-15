@@ -22,11 +22,19 @@ const Home = ({ users, colabs }) => {
           {colabs.length} Colabs{' '}
           <span className="heading-font">and counting!</span>
         </div>
-        <div className="home-search-div">Explore</div>
+        <div className="home-search-div">
+          Explore{' '}
+          <span>
+            <i class="fa-solid fa-angles-right"></i>
+          </span>
+        </div>
       </Link>
       <h4>Or check out a random user</h4>
       {users ? (
         <div className="random-users">
+          <RandomUserCard
+            randomUser={users[Math.floor(Math.random() * users.length)]}
+          />
           <RandomUserCard
             randomUser={users[Math.floor(Math.random() * users.length)]}
           />

@@ -20,7 +20,7 @@ const AudioPlayerPreview = ({ track, genres, metadata, needs }) => {
                   genre.id === track.genres.genreId ? (
                     <li key={track.genres.genreId}>{genre.genreName}</li>
                   ) : (
-                    <li>No Genres Selected</li>
+                    console.log('no need selected')
                   )
                 )
               ) : (
@@ -29,7 +29,7 @@ const AudioPlayerPreview = ({ track, genres, metadata, needs }) => {
                     genre.id === trackGenre.genreId ? (
                       <li key={genre.id}>{genre.genreName}</li>
                     ) : (
-                      <li>No Genres Selected</li>
+                      console.log('no need selected')
                     )
                   )
                 )
@@ -46,7 +46,7 @@ const AudioPlayerPreview = ({ track, genres, metadata, needs }) => {
                   data.id === track.metadata.metadataId ? (
                     <li key={data.id}>{data.metadataName}</li>
                   ) : (
-                    <li>No Moods Picked</li>
+                    console.log('no need selected')
                   )
                 )
               ) : (
@@ -55,7 +55,7 @@ const AudioPlayerPreview = ({ track, genres, metadata, needs }) => {
                     data.id === trackMetadata.metadataId ? (
                       <li key={data.id}>{data.metadataName}</li>
                     ) : (
-                      <li>No Moods Picked</li>
+                      console.log('no need selected')
                     )
                   )
                 )
@@ -72,7 +72,7 @@ const AudioPlayerPreview = ({ track, genres, metadata, needs }) => {
                   needs.id === track.needs.needId ? (
                     <li key={needs.id}>{need.needName}</li>
                   ) : (
-                    <li>No Needs Picked</li>
+                    console.log('no need selected')
                   )
                 )
               ) : (
@@ -81,7 +81,7 @@ const AudioPlayerPreview = ({ track, genres, metadata, needs }) => {
                     need.id === trackNeed.needId ? (
                       <li key={needs.id}>{need.needName}</li>
                     ) : (
-                      <li>No Needs Picked</li>
+                      console.log('no need selected')
                     )
                   )
                 )

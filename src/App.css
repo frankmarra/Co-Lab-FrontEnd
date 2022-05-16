@@ -348,6 +348,10 @@ input {
 
 .user-page-content {
   grid-column: 2 / 3;
+}
+
+.user-page-content h2 {
+  text-align: center;
 
 }
 

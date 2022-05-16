@@ -8,6 +8,8 @@ const Nav = ({ authenticated, activeUser, handleLogOut }) => {
         <a
           href="https://github.com/frankmarra/Co-Lab-FrontEnd#readme"
           alt="Read Me"
+          target="_blank"
+          rel="noreferrer"
         >
           <li>
             <i className="fa-solid fa-circle-question"></i>
@@ -38,6 +40,8 @@ const Nav = ({ authenticated, activeUser, handleLogOut }) => {
       <a
         href="https://github.com/frankmarra/Co-Lab-FrontEnd#readme"
         alt="Read Me"
+        target="_blank"
+        rel="noreferrer"
       >
         <li>
           <i className="fa-solid fa-circle-question"></i>

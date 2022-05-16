@@ -5,6 +5,14 @@ const Nav = ({ authenticated, activeUser, handleLogOut }) => {
   if (activeUser) {
     authenticatedOptions = (
       <ul className="nav-search-title">
+        <a
+          href="https://github.com/frankmarra/Co-Lab-FrontEnd#readme"
+          alt="Read Me"
+        >
+          <li>
+            <i className="fa-solid fa-circle-question"></i>
+          </li>
+        </a>
         <Link to="/search">
           <li>
             <i className="fa-solid fa-magnifying-glass"></i>
@@ -27,6 +35,14 @@ const Nav = ({ authenticated, activeUser, handleLogOut }) => {
 
   const publicOptions = (
     <ul className="nav-search-title">
+      <a
+        href="https://github.com/frankmarra/Co-Lab-FrontEnd#readme"
+        alt="Read Me"
+      >
+        <li>
+          <i className="fa-solid fa-circle-question"></i>
+        </li>
+      </a>
       <Link to="/search">
         <li>
           <i className="fa-solid fa-magnifying-glass"></i>

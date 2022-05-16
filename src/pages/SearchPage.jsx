@@ -150,6 +150,7 @@ const SearchPage = ({
 
         <button type="Submit">
           <i className="fa-solid fa-compact-disc fa-spin" title="search"></i>
+          Apply
         </button>
       </form>
 

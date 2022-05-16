@@ -74,15 +74,15 @@ const UserProfile = ({
           <Link className="add-track-link" to={`/users/${userId}/addtrack`}>
             <li>Add Track</li>
           </Link>
-
-          <Link className="update-user-link" to={`/users/${userId}/update`}>
-            <li>Update User</li>
-          </Link>
           <Link
             className="create-colab-user-link"
             to={`/users/${userId}/createcolab`}
           >
             <li>Create Co-lab</li>
+          </Link>
+
+          <Link className="update-user-link" to={`/users/${userId}/update`}>
+            <li>Update User</li>
           </Link>
           {userDetails.collabs.length > 0 ? (
             viewColabs ? (

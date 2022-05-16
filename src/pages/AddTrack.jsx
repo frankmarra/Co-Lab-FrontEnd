@@ -158,7 +158,7 @@ const AddTrack = ({
                 placeholder="optional"
                 form="add-track"
                 rows="4"
-                cols="50"
+                cols="25"
               >
                 This is optional
               </textarea>

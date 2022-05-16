@@ -204,7 +204,7 @@ const UpdateTrack = ({
                 placeholder="optional"
                 form="update-track"
                 rows="4"
-                cols="50"
+                cols="25"
               >
                 This is optional
               </textarea>

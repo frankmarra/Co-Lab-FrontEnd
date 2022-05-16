@@ -96,7 +96,7 @@ const Signup = ({ setActiveUser }) => {
           <h5>After creating an account, you will be asked to sign in.</h5>
           <h5>
             Then start uploading your tracks or searching through the Co-lab
-            library for tracks to colab on!
+            library for tracks to collaborate on!
           </h5>
         </div>
       </div>

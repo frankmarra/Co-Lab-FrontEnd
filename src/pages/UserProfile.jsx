@@ -44,7 +44,7 @@ const UserProfile = ({
         <h4>You have been a part of {userDetails.userCollabCount} Co-labs</h4>
       </div>
       <div className="user-page-content">
-        {userDetails.Tracks.length == 0 ? (
+        {userDetails.Tracks.length === 0 ? (
           <div>
             <h2>
               You don't have any tracks. Add some by clicking the 'Add Tracks'
@@ -124,7 +124,11 @@ const UserProfile = ({
     <div className="visit-user-page">
       <div className="visit-user-info">
         <div className="visit-user-banner-section">
-          <img id="visit-user-banner" src={userDetails.userBannerPic} />
+          <img
+            id="visit-user-banner"
+            src={userDetails.userBannerPic}
+            alt={userDetails.userName}
+          />
           <div className="visit-user-pic-wrapper">
             <img
               id="visit-user-pic"

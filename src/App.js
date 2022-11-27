@@ -14,9 +14,6 @@ import UpdateUser from './pages/UpdateUser'
 import CreateColab from './pages/CreateColab'
 import DeleteTrack from './pages/DeleteTrack'
 import axios from 'axios'
-import { supabase } from './supabaseClient'
-
-// const UserContext = createContext()
 
 function App() {
   const [activeUser, setActiveUser] = useState({ id: 0, userName: 'guest' })
@@ -30,7 +27,6 @@ function App() {
   const [trackDetails, setTrackDetails] = useState()
   const [users, setUsers] = useState([])
   const [colabs, setColabs] = useState([])
-  let navigate = useNavigate()
 
   useEffect(() => {
     const token = localStorage.getItem('token')

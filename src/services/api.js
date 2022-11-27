@@ -1,5 +1,4 @@
 import Axios from 'axios'
-import { supabase } from '../supabaseClient'
 
 export const BASE_URL = 'co-lab-backend-production.up.railway.app/api'
 

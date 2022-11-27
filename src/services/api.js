@@ -1,6 +1,7 @@
 import Axios from 'axios'
+import { supabase } from '../supabaseClient'
 
-export const BASE_URL = 'https://colabdb.herokuapp.com/api'
+export const BASE_URL = 'co-lab-backend-production.up.railway.app/api'
 
 const Client = Axios.create({ baseURL: BASE_URL })
 

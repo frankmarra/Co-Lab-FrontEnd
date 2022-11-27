@@ -14,6 +14,7 @@ import UpdateUser from './pages/UpdateUser'
 import CreateColab from './pages/CreateColab'
 import DeleteTrack from './pages/DeleteTrack'
 import axios from 'axios'
+import { supabase } from './supabaseClient'
 
 // const UserContext = createContext()
 
@@ -38,38 +39,38 @@ function App() {
     }
     const getUsers = async () => {
       const response = await axios.get(
-        `https://colabdb.herokuapp.com/api/users`
+        `https://co-lab-backend-production.up.railway.app/api/users`
       )
       setUsers(response.data)
     }
 
     const getTracks = async () => {
       const response = await axios.get(
-        `https://colabdb.herokuapp.com/api/tracks`
+        `https://co-lab-backend-production.up.railway.app↗/api/tracks`
       )
       setAllTracks(response.data)
     }
     const getColabs = async () => {
       const response = await axios.get(
-        `https://colabdb.herokuapp.com/api/collabs`
+        `https://co-lab-backend-production.up.railway.app/api/collabs`
       )
       setColabs(response.data)
     }
     const getGenres = async () => {
       const response = await axios.get(
-        `https://colabdb.herokuapp.com/api/genres`
+        `https://co-lab-backend-production.up.railway.app/api/genres`
       )
       setGenres(response.data)
     }
     const getMetadata = async () => {
       const response = await axios.get(
-        `https://colabdb.herokuapp.com/api/metadata`
+        `https://co-lab-backend-production.up.railway.app/api/metadata`
       )
       setMetadata(response.data)
     }
     const getNeeds = async () => {
       const response = await axios.get(
-        `https://colabdb.herokuapp.com/api/needs`
+        `https://co-lab-backend-production.up.railway.app/api/needs`
       )
       setNeeds(response.data)
     }

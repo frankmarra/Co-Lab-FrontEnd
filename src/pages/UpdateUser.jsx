@@ -32,7 +32,7 @@ const UpdateUser = ({ activeUser, authenticated, userDetails }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await axios.put(
-      `https://colabdb.herokuapp.com/api/users/${activeUser.id}`,
+      `https://co-lab-backend-production.up.railway.app/api/users/${activeUser.id}`,
       formValues
     )
     navigate(`/users/${activeUser.id}`)

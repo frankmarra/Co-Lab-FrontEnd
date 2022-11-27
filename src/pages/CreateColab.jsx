@@ -24,7 +24,7 @@ const CreateColab = ({ activeUser, authenticated, userDetails }) => {
     users.push({ userId: formValues.colabCreator })
     users.push({ userId: formValues.colabAdd })
     await axios.post(
-      `https://colabdb.herokuapp.com/api/collabs/${formValues.colabTrack}`,
+      `https://co-lab-backend-production.up.railway.app/api/collabs/${formValues.colabTrack}`,
       { users: users }
     )
     navigate(`/users/${userId}`)

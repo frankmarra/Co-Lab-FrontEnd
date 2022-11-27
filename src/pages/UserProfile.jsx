@@ -24,7 +24,7 @@ const UserProfile = ({
 
   const getUserDetails = async () => {
     const response = await axios.get(
-      `https://colabdb.herokuapp.com/api/users/${userId}`
+      `https://co-lab-backend-production.up.railway.app/api/users/${userId}`
     )
     setUserDetails(response.data)
   }

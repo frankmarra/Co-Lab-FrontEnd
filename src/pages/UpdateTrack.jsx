@@ -34,7 +34,7 @@ const UpdateTrack = ({
   useEffect(() => {
     const getTrackDetails = async () => {
       const response = await axios.get(
-        `https://colabdb.herokuapp.com/api/tracks/${trackId}`
+        `https://co-lab-backend-production.up.railway.app/api/tracks/${trackId}`
       )
       setTrackDetails(response.data)
     }

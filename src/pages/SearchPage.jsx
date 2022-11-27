@@ -78,7 +78,7 @@ const SearchPage = ({
     })
     let searchQuery = trackSearchChoices.join('')
     const response = await axios.get(
-      `https://colabdb.herokuapp.com/api/tracks/search/data?${searchQuery}`
+      `https://co-lab-backend-production.up.railway.app/api/tracks/search/data?${searchQuery}`
     )
     setSearchResults(response.data)
   }
@@ -90,7 +90,7 @@ const SearchPage = ({
   const handleTextSubmit = async (e) => {
     e.preventDefault()
     const response = await axios.get(
-      `https://colabdb.herokuapp.com/api/tracks/search/data/input?word=${textSearch}`
+      `https://co-lab-backend-production.up.railway.app/api/tracks/search/data/input?word=${textSearch}`
     )
     setSearchResults(response.data)
     setTrackGenres(new Array(genres.length).fill(false))
